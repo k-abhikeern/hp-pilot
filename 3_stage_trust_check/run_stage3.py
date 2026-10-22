@@ -98,7 +98,7 @@ def make_plot(records, settings, path):
     import matplotlib.pyplot as plt
 
     ink, muted, grid, surface = "#0b0b0b", "#898781", "#e1e0d9", "#fcfcfb"
-    styles = {TRUSTED: ("#0ca30c", "o"), NEEDS_DFT: ("#d03b3b", "^")}  # status colours + distinct shapes
+    styles = {TRUSTED: ("#0072B2", "o"), NEEDS_DFT: ("#E69F00", "^")}  # status colours + distinct shapes
 
     fig, ax = plt.subplots(figsize=(7, 4.5), facecolor=surface)
     ax.set_facecolor(surface)

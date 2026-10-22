@@ -43,7 +43,7 @@ from incar_rules import CHECKS, MAGNETIC_ELEMENTS, PROFILES, pressure_settings  
 
 STAGE3_OUT = PROJECT_ROOT / "3_stage_trust_check" / "outputs"
 INK, MUTED, GRID, SURFACE, SERIES = "#0b0b0b", "#898781", "#e1e0d9", "#fcfcfb", "#2a78d6"
-STATUS_COLOR = {"Trusted": "#0ca30c", "Needs DFT": "#d03b3b"}
+STATUS_COLOR = {"Trusted": "#0072B2", "Needs DFT": "#E69F00"}
 
 warnings.filterwarnings("ignore", message=".*POTCAR.*")  # pymatgen warns that our POTCAR copies aren't MP's exact hashes
 

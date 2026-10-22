@@ -168,3 +168,14 @@ Each item says where the change would go, so it can be added without touching ot
 | Tonight | Replace the figure and repository placeholders in the write-up | `hackathon_writeup.md` |
 | Tonight | Change any claim in the write-up the code doesn't deliver yet | `hackathon_writeup.md` |
 | Tonight | Record the 4-minute video | `video_script.md` |
+
+## Added 23 Oct (after the MgVH5 test)
+
+**Soon**
+- Stage 2: ML relaxations of the MgVH5 structures did not converge in 300 steps at any pressure. Try more steps or BFGS for hydrides, and report the forces at the end.
+- Stage 3 / calibration: compare ML and DFT as a change with pressure (same reference), because ML and VASP energy zero points differ and the absolute offset is not meaningful.
+- Trust limits: use the HPCSD series (more phases and pressures, from the database) instead of one structure, to calibrate per chemistry.
+
+**Later**
+- Committee: add a model from a different family (MatterSim or eSEN) for hydrides, where the all-MACE committee may share a blind spot.
+- Materials Project 0 GPa prior for trust limits: tried and dropped (scale does not transfer to high pressure). Revisit only with a normalised disagreement measure.

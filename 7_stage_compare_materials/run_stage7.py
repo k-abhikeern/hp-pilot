@@ -30,7 +30,7 @@ sys.path.insert(0, str(ROOT / "6_stage_literature_check"))
 from run_stage6 import phase_names  # noqa: E402  (common names of structure types)
 
 INK, INK2, MUTED, GRID, SURFACE = "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#fcfcfb"
-STATUS = {"Trusted": "#0ca30c", "Needs DFT": "#d03b3b"}
+STATUS = {"Trusted": "#0072B2", "Needs DFT": "#E69F00"}
 MATERIAL_MARKERS = ["o", "s", "D", "^", "v", "P"]
 ERROR_LIMIT_MEV = 50  # an ML error above this counts as "ML was wrong" in the scorecard
 

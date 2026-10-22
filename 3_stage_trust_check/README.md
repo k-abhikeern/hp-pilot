@@ -73,10 +73,17 @@ If the check needs a new number (for example a coordination number), compute it 
 
 ## Results so far (Si, 15 GPa, committee of three MACE models)
 
-- 8 Trusted, 12 Needs DFT, 6 of those high priority.
-- `s010` (the collapsed structure from stage 2) is caught clearly: the other models put it at about 12,000 GPa instead of 15, a model breakdown.
-- The best structure, `s019` (beta-tin), is flagged: all three models agree it's the most stable, but disagree by 82 meV/atom on by how much. This is exactly the kind of structure DFT should confirm.
+- Latest run, with the provisional limits in `config.toml`: 0 Trusted, 20 Needs DFT, 3 of those high priority.
+- Earlier run (CaSiO₃ with calibrated limits, which is not the Si case) gave 5 Trusted. Its outputs were replaced by the Si run above.
 - Limitation: all three committee models are MACE, so they share an architecture and may share blind spots. Mixing model families is a planned improvement.
+
+## External test: MgVH5 from the HPCSD database (32 to 90 GPa)
+
+Folder: `external_tests/MgVH5_series/`. The database structure was checked at 32 to 90 GPa in 10 GPa steps (`run_series.py`):
+ML relaxes it at each pressure, one quick DFT run starts from the database CIF, and `collect` compares the two.
+Results and figure are in that folder's `outputs/`.
+
+Only one phase of one material is used here. So it tests how wrong ML is as pressure rises. It is not enough to calibrate the trust limits on its own.
 
 ## Calibrating the limits on DFT results
 

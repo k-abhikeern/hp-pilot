@@ -33,7 +33,7 @@ from hp_common import get_logger, load_config, save_run_info, stage_dirs  # noqa
 STAGE4_OUT = PROJECT_ROOT / "4_stage_incar_build" / "outputs"
 RUNS_DIR = STAGE_DIR / "runs"
 INK, MUTED, GRID, SURFACE = "#0b0b0b", "#898781", "#e1e0d9", "#fcfcfb"
-STYLES = {"Trusted": ("#0ca30c", "o"), "Needs DFT": ("#d03b3b", "^")}
+STYLES = {"Trusted": ("#0072B2", "o"), "Needs DFT": ("#E69F00", "^")}
 EV_PER_A3_PER_KBAR = 1 / 1602.1766  # 1 eV/A^3 = 1602.18 kBar
 
 

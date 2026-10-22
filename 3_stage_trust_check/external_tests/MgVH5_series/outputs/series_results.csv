@@ -1,0 +1,8 @@
+pressure_GPa,file,dft_status,dft_pressure_GPa,ml_status,ml_H_eV_per_atom,dft_H_eV_per_atom,error_ML_minus_DFT_meV,ml_volume_A3,dft_volume_A3
+32.0,MgVH5.cif,converged,32.76,not_converged,-2.92537,-2.76121,-164.2,4.816,5.115
+40.0,MgVH5 (1).cif,converged,40.78,not_converged,-2.69408,-2.51028,-183.8,4.737,4.94
+50.0,MgVH5 (2).cif,converged,50.71,not_converged,-2.40205,-2.20663,-195.4,4.655,4.755
+60.0,MgVH5 (3).cif,converged,60.68,not_converged,-2.13529,-1.91388,-221.4,4.513,4.594
+70.0,MgVH5 (4).cif,converged,70.64,not_converged,-1.85511,-1.63063,-224.5,4.445,4.454
+80.0,MgVH5 (5).cif,converged,80.59,not_converged,-1.58289,-1.35575,-227.1,4.386,4.33
+90.0,MgVH5 (6).cif,converged,90.7,not_converged,-1.30635,-1.08825,-218.1,4.282,4.217

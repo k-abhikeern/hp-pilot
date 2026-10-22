@@ -52,6 +52,7 @@
       "min_bond_ratio": 0.8,
       "collapse_fraction": 0.75,
       "dft_window_meV": 100.0,
+      "limits_file": "",
       "make_plot": true
     },
     "stage4": {
@@ -77,13 +78,27 @@
       "vasp_dir": "/opt/ohpc/pub/software/vasp.6.4.2",
       "vasp_exe": "vasp_std",
       "make_plots": true
+    },
+    "stage8": {
+      "campaign": "NaCl_40GPa",
+      "n_phases": 2,
+      "pressures_gpa": [
+        10,
+        20,
+        25,
+        30,
+        35,
+        40,
+        50
+      ],
+      "profile": "quick"
     }
   },
   "profile": "quick",
   "input": "/home/abhikeern/project/7_OSI/3_stage_trust_check/outputs/needs_dft.extxyz",
-  "n_calcs": 20,
-  "n_ready": 20,
-  "jobs": 10,
+  "n_calcs": 3,
+  "n_ready": 3,
+  "jobs": 3,
   "cluster_status": {
     "available": true,
     "partition": "defq",
@@ -93,5 +108,5 @@
     "total_cores": 704,
     "pending_jobs": 61
   },
-  "log_file": "/home/abhikeern/project/7_OSI/4_stage_incar_build/logs/stage4_20261022_190725.log"
+  "log_file": "/home/abhikeern/project/7_OSI/4_stage_incar_build/logs/stage4_20261022_223829.log"
 }

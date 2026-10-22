@@ -21,3 +21,10 @@ __pycache__/
 # Paper abstracts inside archived campaigns (links stay in each literature report)
 7_stage_compare_materials/campaigns/*/literature/raw_valency/
 7_stage_compare_materials/campaigns/*/literature/valency_results.json
+
+# HPCSD database files (from calypso.cn, after sign-in): not ours to redistribute
+0_stage_softwares_resources_etc/data/
+
+# VASP run folders of the external MgVH5 tests (POTCARs inside; summaries are in the series outputs)
+3_stage_trust_check/external_tests/*/series_*/
+3_stage_trust_check/external_tests/*/dft_*/

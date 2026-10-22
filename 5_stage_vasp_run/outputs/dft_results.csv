@@ -1,21 +1,21 @@
 name,id,pressure_GPa,label,dft_status,ionic_steps,ml_space_group,dft_space_group,ml_enthalpy_eV_per_atom,dft_enthalpy_eV_per_atom,dft_energy_eV_per_atom,dft_volume_A3_per_atom,dft_pressure_GPa,ml_dH_meV,dft_dH_meV
-s000_15GPa,s000,15.0,Needs DFT,converged,24,P6/mmm,P6_3/mcm,-3.7705,-3.7819,-5.0517,13.563,15.053,12.0726,3.9329
-s001_15GPa,s001,15.0,Trusted,converged,4,Pm-3m,Pm-3m,-3.7706,-3.648,-5.0042,14.4864,15.0022,11.9643,137.9004
-s002_15GPa,s002,15.0,Needs DFT,converged,11,P4_2/mmc,P4_2/mmc,-3.6612,-3.6343,-4.8735,13.2357,14.9661,121.378,151.5528
-s003_15GPa,s003,15.0,Needs DFT,converged,7,I4/mmm,I4/mmm,-3.7228,-3.65,-4.9188,13.5526,14.981,59.7862,135.8515
-s004_15GPa,s004,15.0,Trusted,converged,11,P4/nmm,P4/nmm,-3.7698,-3.6424,-4.9953,14.451,14.9962,12.765,143.4936
-s005_15GPa,s005,15.0,Needs DFT,converged,3,Fm-3m,Fm-3m,-3.6826,-3.6176,-4.7983,12.6111,14.9806,99.9583,168.2385
-s006_15GPa,s006,15.0,Trusted,converged,11,Pm-3m,Pm-3m,-3.7706,-3.6424,-4.996,14.4576,15.0015,11.9575,143.4279
-s007_15GPa,s007,15.0,Trusted,converged,9,Pm-3m,Pm-3m,-3.7704,-3.6495,-5.0014,14.4397,14.9911,12.1056,136.3066
-s008_15GPa,s008,15.0,Needs DFT,converged,39,P6_3/m,P6_3/mmc,-3.6655,-3.6638,-4.8403,12.5658,14.9545,116.9952,122.0303
-s009_15GPa,s009,15.0,Trusted,converged,9,Pm-3m,Pm-3m,-3.7706,-3.6496,-5.0015,14.44,14.993,11.927,136.2934
-s010_15GPa,s010,15.0,Needs DFT,converged,6,Pm-3m,Pm-3m,-2.8778,-3.6283,-4.9788,14.4255,14.9364,904.7236,157.5748
-s011_15GPa,s011,15.0,Needs DFT,converged,18,Fm-3m,I4/mmm,-3.6822,-3.6316,-4.817,12.6621,15.0001,100.3094,154.2648
-s012_15GPa,s012,15.0,Needs DFT,converged,12,I4/mmm,I4/mmm,-3.6842,-3.6685,-4.8634,12.7629,15.0112,98.3132,117.3451
-s013_15GPa,s013,15.0,Trusted,converged,29,Cmcm,Cmcm,-3.7669,-3.6987,-4.992,13.8144,14.9472,15.6821,87.1814
-s014_15GPa,s014,15.0,Trusted,converged,3,Pm-3m,Pm-3m,-3.7703,-3.6478,-5.0039,14.4837,15.0009,12.2257,138.0096
-s015_15GPa,s015,15.0,Needs DFT,converged,7,P6/mmm,P6/mmm,-3.7705,-3.7859,-5.0541,13.5459,15.01,12.0581,0.0
-s016_15GPa,s016,15.0,Trusted,converged,42,Cmcm,Cmcm,-3.7702,-3.6987,-4.9906,13.7986,15.0237,12.3614,87.15
-s017_15GPa,s017,15.0,Needs DFT,converged,9,P6_3/mmc,P6_3/mmc,-3.6664,-3.6659,-4.8458,12.6029,15.0104,116.1068,119.9617
-s018_15GPa,s018,15.0,Needs DFT,converged,33,P6_322,P6_322,-3.6003,-3.5841,-4.9427,14.5115,14.9957,182.2318,201.7293
-s019_15GPa,s019,15.0,Needs DFT,converged,7,I4_1/amd,I4_1/amd,-3.7825,-3.7824,-5.0688,13.7402,15.008,0.0,3.4552
+s000_30GPa,s000,30.0,Needs DFT,converged,11,P6_3/mmc,P6_3/mmc,-2.3417,-2.2706,-4.8314,13.6766,30.08,3250.8224,3299.5026
+s001_30GPa,s001,30.0,Needs DFT,converged,6,I-4m2,I-4m2,-3.5281,-3.4369,-5.3009,9.9549,30.4917,2064.4065,2133.1586
+s002_30GPa,s002,30.0,Needs DFT,not converged,60,Cc,Cc,-4.0137,-4.3597,-6.2834,10.274,14.9368,1578.7971,1210.3853
+s003_30GPa,s003,30.0,Needs DFT,"unreadable (Premature end of data in tag incar line 11, line 31, column )",,?,,-40572094.6855,,,,,,
+s004_30GPa,s004,30.0,Needs DFT,"unreadable (Premature end of data in tag scstep line 2938, line 2939, co)",,P6_3/mmc,,-4.2161,,,,,,
+s005_30GPa,s005,30.0,Needs DFT,converged,11,Pmmm,Pmmm,-5.3959,-5.3064,-6.9144,8.5872,29.835,196.6364,263.6137
+s006_30GPa,s006,30.0,Needs DFT,converged,3,Pm-3m,Pm-3m,-5.5925,-5.5701,-7.1469,8.4213,29.9933,0.0,0.0
+s007_30GPa,s007,30.0,Needs DFT,converged,42,P1,Cmmm,-5.3058,-5.4146,-7.021,8.5793,29.9937,286.6649,155.4652
+s008_30GPa,s008,30.0,Needs DFT,converged,10,P4/mbm,P4/mbm,-4.0583,-4.0436,-6.092,10.9396,29.8804,1534.2485,1526.4414
+s009_30GPa,s009,30.0,Needs DFT,converged,8,Imm2,Imm2,-4.9124,-4.847,-6.7775,10.31,29.9905,680.0749,723.0973
+s010_30GPa,s010,30.0,Needs DFT,converged,3,P6/mmm,P6/mmm,-0.8559,-0.8889,-3.4913,13.8984,29.8605,4736.6049,4681.1586
+s011_30GPa,s011,30.0,Needs DFT,"unreadable (Premature end of data in tag incar line 11, line 31, column )",,Pm-3m,,-5.5926,,,,,,
+s012_30GPa,s012,30.0,Needs DFT,converged,21,C2,C2,-4.9982,-4.9238,-6.795,9.9933,29.6811,594.2754,646.2816
+s013_30GPa,s013,30.0,Needs DFT,converged,3,Pm-3m,Pm-3m,-1.9741,-2.1138,-4.3504,11.9448,29.921,3618.4034,3456.3077
+s014_30GPa,s014,30.0,Needs DFT,converged,15,P4_2,P4_2,-3.7204,-3.6703,-6.2525,13.7902,29.7236,1872.0877,1899.7498
+s015_30GPa,s015,30.0,Needs DFT,converged,9,Imm2,Imm2,-4.9125,-4.8469,-6.7764,10.305,30.1058,680.0164,723.172
+s016_30GPa,s016,30.0,Needs DFT,converged,17,P2/m,Pmmm,-5.3938,-5.3066,-6.9132,8.58,29.9763,198.7059,263.4295
+s017_30GPa,s017,30.0,Needs DFT,converged,5,P4/mmm,P4/mmm,-2.0632,-1.9429,-4.0495,11.2501,29.6063,3529.2716,3627.114
+s018_30GPa,s018,30.0,Needs DFT,not converged,60,I-4m2,C2,-2.9965,-4.6899,-6.4733,9.5245,24.6481,2596.0192,880.1769
+s019_30GPa,s019,30.0,Needs DFT,"unreadable (Premature end of data in tag incar line 11, line 31, column )",,P-4m2,,-2.6592,,,,,,

@@ -329,6 +329,43 @@ All values in meV/atom above the best structure.
 
 ---
 
+## External test: MgVH5 from the HPCSD database, 32 to 90 GPa (DONE)
+
+**What was done**
+- The HPCSD database (arXiv 2605.14471, calypso.cn after sign-in) gave one MgVH₅ structure (C2/m, 28 atoms) at 32 GPa and six more at 40 to 90 GPa in 10 GPa steps. These CIFs are in `0_stage_softwares_resources_etc/data/` and are gitignored (not ours to redistribute).
+- `3_stage_trust_check/external_tests/MgVH5_series/run_series.py`: ML (stage 2 model) relaxes each structure at its pressure, then one quick DFT run per pressure starts from the database CIF. Stage 4 and 5 tools are reused.
+- Job 64289 (SLURM) finished in about 5 minutes, all seven DFT runs converged.
+
+**Results (same structure at every pressure)**
+
+| Pressure (GPa) | DFT pressure (GPa) | ML minus DFT (meV/atom) | DFT volume (Å³) | ML volume (Å³) |
+|---|---|---|---|---|
+| 32 | 32.8 | −164 | 5.115 | 4.816 |
+| 40 | 40.8 | −184 | 4.940 | 4.737 |
+| 50 | 50.7 | −195 | 4.755 | 4.655 |
+| 60 | 60.7 | −221 | 4.594 | 4.513 |
+| 70 | 70.6 | −224 | 4.454 | 4.445 |
+| 80 | 80.6 | −227 | 4.330 | 4.386 |
+| 90 | 90.7 | −218 | 4.217 | 4.282 |
+
+- DFT keeps the database structure at every pressure (its volume equals the CIF volume), so the database entries agree with our DFT settings.
+- ML is wrong at every pressure, by 160 to 230 meV/atom, against the 50 meV/atom line. The error does not grow steadily with pressure.
+- ML's volume falls more slowly than DFT's, and it is smaller at 32 to 60 GPa and larger at 80 to 90 GPa. That mismatch is the clearest sign of the problem.
+- Caveats: ML relaxations did not converge in 300 steps at any pressure, so ML numbers are approximate. ML and VASP energies have different zero points, so only the change with pressure (about 60 meV/atom) is meaningful, not the absolute offset. One structure is not enough to calibrate the trust limits.
+
+**Files:** `3_stage_trust_check/external_tests/MgVH5_series/` (README, `run_series.py`, `outputs/series_results.csv`, `outputs/mgvh5_ml_vs_dft.png`).
+
+---
+
+## Tried and dropped: Materials Project prior limit at 0 GPa
+
+- Idea: set the trust limit from MP's 0 GPa polymorphs of the same composition, with no DFT at the target pressure.
+- Tested on NaCl (3 polymorphs), Si (17) and CaSiO₃ (5): prior limits 13, 59 and 5 meV/atom.
+- Result: NaCl catches all wrong results but has no right results to test trust against. Si catches 14% of wrong results (current limit: 43%) and trusts none. CaSiO₃ catches all but trusts none (calibrated limit: 83%).
+- Dropped: the scale of committee disagreement at 0 GPa does not transfer to high pressure. The script, folder and plot line were removed.
+
+---
+
 ## The full pipeline now works end to end
 
 composition and pressure → random structures (1) → ML relaxation (2) → trust check (3) → VASP inputs and job plan (4) → VASP runs and DFT vs ML comparison (5) → literature check (6).

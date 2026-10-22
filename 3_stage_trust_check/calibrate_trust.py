@@ -32,7 +32,7 @@ SIGNALS = {"enthalpy_spread_meV": "max_enthalpy_spread_meV",
            "max_pressure_dev_GPa": "max_pressure_deviation_gpa",
            "max_force_eV_A": "max_force_eV_A"}
 INK, MUTED, GRID, SURFACE = "#0b0b0b", "#898781", "#e1e0d9", "#fcfcfb"
-WRONG, RIGHT = "#d03b3b", "#0ca30c"
+WRONG, RIGHT = "#E69F00", "#0072B2"
 
 
 def load(folder):
@@ -127,13 +127,25 @@ def main():
             wrong = r["error"] > args.error_limit
             ax.scatter(r["enthalpy_spread_meV"], r["error"], s=45, color=WRONG if wrong else RIGHT,
                        marker="^" if wrong else "o", edgecolors=SURFACE, linewidths=1, zorder=3, clip_on=False)
-        ax.axhline(args.error_limit, color=MUTED, lw=1, ls="--")
-        ax.axvline(current["max_enthalpy_spread_meV"], color=INK, lw=1, ls=":")
-        ax.axvline(results[comp]["best"]["max_enthalpy_spread_meV"], color=INK, lw=1.4)
         ax.set_xscale("symlog", linthresh=1)
         ax.set_yscale("symlog", linthresh=10)
         ax.set_xlim(0, max(r["enthalpy_spread_meV"] for r in rows) * 2)
         ax.set_ylim(0, max(max(r["error"] for r in rows) for _, rows in data) * 2)
+        cut, old_cut = results[comp]["best"]["max_enthalpy_spread_meV"], current["max_enthalpy_spread_meV"]
+        xmax = ax.get_xlim()[1]
+        # Shaded regions: left of the calibrated limit = trusted, right of it = send to DFT (this rule only).
+        ax.axvspan(0, cut, color=RIGHT, alpha=0.08, lw=0, zorder=0)
+        ax.axvspan(cut, xmax, color=WRONG, alpha=0.08, lw=0, zorder=0)
+        if cut > 0:
+            ax.text(0.02, 0.03, "trusted\n(no DFT)", transform=ax.transAxes, fontsize=7.5, color=RIGHT, va="bottom")
+        ax.text(0.98, 0.03, "send to\nDFT", transform=ax.transAxes, fontsize=7.5, color=WRONG, ha="right", va="bottom")
+        ax.axhline(args.error_limit, color=MUTED, lw=1, ls="--")
+        ax.axvline(old_cut, color=INK, lw=1, ls=":")
+        ax.axvline(cut, color=INK, lw=1.4)
+        ax.text(old_cut, 0.98, " current limit", transform=ax.get_xaxis_transform(), rotation=90, ha="left",
+                va="top", fontsize=7.5, color=INK)
+        ax.text(cut, 0.98, "calibrated limit ", transform=ax.get_xaxis_transform(), rotation=90,
+                ha="right" if cut > 0.5 * xmax else "left", va="top", fontsize=7.5, color=INK)
         old, new = results[comp]["old"], results[comp]["new"]
         ax.set_title(f"{comp}\nold limits: caught {fmt(old['caught'])}, trusted {fmt(old['trusted'])}\n"
                      f"calibrated: caught {fmt(new['caught'])}, trusted {fmt(new['trusted'])}",
@@ -148,9 +160,11 @@ def main():
     handles = [plt.Line2D([], [], marker="^", ls="", color=WRONG, label=f"ML wrong (> {args.error_limit:g} meV/atom)"),
                plt.Line2D([], [], marker="o", ls="", color=RIGHT, label="ML right"),
                plt.Line2D([], [], color=INK, ls=":", label="current limit (tuned on Si)"),
-               plt.Line2D([], [], color=INK, lw=1.4, label="calibrated limit")]
-    fig.legend(handles=handles, loc="upper center", ncol=4, frameon=False, fontsize=8, labelcolor=INK,
-               bbox_to_anchor=(0.5, 1.06))
+               plt.Line2D([], [], color=INK, lw=1.4, label="calibrated limit"),
+               plt.Rectangle((0, 0), 1, 1, facecolor=RIGHT, alpha=0.2, lw=0, label="trusted by this rule"),
+               plt.Rectangle((0, 0), 1, 1, facecolor=WRONG, alpha=0.2, lw=0, label="send to DFT by this rule")]
+    fig.legend(handles=handles, loc="upper center", ncol=3, frameon=False, fontsize=8, labelcolor=INK,
+               bbox_to_anchor=(0.5, 1.1))
     fig.tight_layout()
     fig.savefig(out / "calibration.png", dpi=200, bbox_inches="tight", facecolor=SURFACE)
     print(f"wrote {out}/calibrated_limits.toml, calibration_report.md, calibration.png")

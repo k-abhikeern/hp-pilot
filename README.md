@@ -53,7 +53,18 @@ All settings are in **`config.toml`**. Each stage folder has a README with an "I
 | `7_stage_compare_materials` | archive each material; combined figures and scorecard (pymatgen XRD, structure matching) |
 | `8_stage_pressure_scan` | enthalpy vs pressure for the best phases; 0 K transition pressure (ML and DFT) |
 
+External test on database structures (MgVH5, 32 to 90 GPa, HPCSD): `3_stage_trust_check/external_tests/MgVH5_series/`.
+
 Progress and decisions are in `PROGRESS.md`. Planned improvements for every stage are in `future_stage_wise_improvements.md`.
+
+## Key figures
+
+| Figure | What it shows | What it supports |
+|---|---|---|
+| [overview.png](7_stage_compare_materials/outputs/overview.png) | Si, NaCl and CaSiO₃: ML vs DFT ranking, DFT winner, simulated XRD | The DFT step lands on the literature phase for all three |
+| [calibration.png](3_stage_trust_check/calibration/calibration.png) | Real ML error vs model disagreement, per material, with old and calibrated cut-offs | Limits must be set per material |
+| [enthalpy_vs_pressure_NaCl_40GPa.png](8_stage_pressure_scan/outputs/enthalpy_vs_pressure_NaCl_40GPa.png) | NaCl rocksalt vs CsCl enthalpy vs pressure, DFT and ML | The 0 K transition pressure (24.6 GPa DFT) and where ML goes wrong |
+| [mgvh5_ml_vs_dft.png](3_stage_trust_check/external_tests/MgVH5_series/outputs/mgvh5_ml_vs_dft.png) | MgVH₅ from the HPCSD database, 32–90 GPa: ML error and volumes | ML stays wrong at every pressure tested; the trust check is needed |
 
 ## Adding tools
 

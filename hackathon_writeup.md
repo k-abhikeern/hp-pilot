@@ -32,9 +32,18 @@ A calibration tool fits the trust limits per material on the DFT results.
 - Used alone, the ML model would have picked the wrong NaCl phase, off by more than 1 eV/atom. The trust check flagged every NaCl structure, so this error never went unchecked.
 - **Honest failure:** for Si, the 8 structures the all-MACE committee called Trusted were 75 to 130 meV/atom off. The committee shared a blind spot. It was caught because the pipeline always sends Trusted controls to DFT.
 - **Transition pressure:** the NaCl rocksalt → CsCl-type transition comes out at **24.6 GPa** in DFT (0 K, quick settings); the ML model gives 23.5 GPa but underestimates how fast CsCl-type gains with pressure (19 vs 111 meV/atom at 50 GPa).
+- **Fourth test, database structure:** the HPCSD database (arXiv 2605.14471) gives an MgVH₅ structure at 32 to 90 GPa. DFT keeps that structure at every pressure, so the database and our settings agree. ML is wrong at every pressure, by 160 to 230 meV/atom, and its volume trend differs from DFT. One structure is not enough to calibrate, but it shows the trust check flags a real failure.
+- **What did not work:** setting the trust limit from Materials Project's 0 GPa structures did not transfer to high pressure. We dropped it.
 - **Calibration:** fitting the trust limits per material on the DFT results raises the share of wrong ML results caught for Si from 43% to 79%, and the share of right CaSiO₃ results trusted from 0% to 83%. No single limit works for all three materials, and for Si the models agree most where ML is most wrong, so limits must be set per chemistry (fitted and tested on the same small set, so indicative only).
 
 [Figure: `7_stage_compare_materials/outputs/overview.png`. Per material: ML vs DFT ranking of phases, the DFT winner's structure, and its simulated XRD.]
+
+## Figures
+
+- **Overview** (`7_stage_compare_materials/outputs/overview.png`): the DFT winner matches the literature for all three materials.
+- **Calibration** (`3_stage_trust_check/calibration/calibration.png`): real ML error vs model disagreement; the cut-off must differ per material.
+- **Transition pressure** (`8_stage_pressure_scan/outputs/enthalpy_vs_pressure_NaCl_40GPa.png`): NaCl transition at 24.6 GPa (DFT), with ML going wrong above it.
+- **Database test** (`3_stage_trust_check/external_tests/MgVH5_series/outputs/mgvh5_ml_vs_dft.png`): ML stays wrong at every pressure, 32–90 GPa.
 
 ## Why it matters
 
@@ -44,6 +53,6 @@ A calibration tool fits the trust limits per material on the DFT results.
 
 ## Next steps
 
-Mix model families in the committee (MatterSim, eSEN, fine-tuned high-pressure models from Loew et al. 2026); test the calibrated limits on new materials; standard DFT and pressure scans for all materials; temperature effects on transition pressures.
+Use the HPCSD series of structures (more phases and pressures) to calibrate the trust limits; mix model families in the committee (MatterSim, eSEN, fine-tuned high-pressure models from Loew et al. 2026); test the calibrated limits on new materials; standard DFT and pressure scans for all materials; temperature effects on transition pressures.
 
 Code: https://github.com/k-abhikeern/hp-pilot

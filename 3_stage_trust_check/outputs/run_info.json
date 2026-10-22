@@ -3,16 +3,17 @@
   "config": {
     "project": {
       "name": "hp-pilot",
-      "composition": "CaSiO3",
-      "pressure_gpa": 30.0,
+      "composition": "Si",
+      "pressure_gpa": 15.0,
       "seed": 42
     },
     "stage1": {
       "generator": "pyxtal_random",
       "n_structures": 20,
       "formula_units": [
-        1,
-        2
+        2,
+        4,
+        8
       ],
       "space_groups": [],
       "volume_factor": 1.0,
@@ -51,6 +52,7 @@
       "min_bond_ratio": 0.8,
       "collapse_fraction": 0.75,
       "dft_window_meV": 100.0,
+      "limits_file": "",
       "make_plot": true
     },
     "stage4": {
@@ -76,6 +78,20 @@
       "vasp_dir": "/opt/ohpc/pub/software/vasp.6.4.2",
       "vasp_exe": "vasp_std",
       "make_plots": true
+    },
+    "stage8": {
+      "campaign": "NaCl_40GPa",
+      "n_phases": 2,
+      "pressures_gpa": [
+        10,
+        20,
+        25,
+        30,
+        35,
+        40,
+        50
+      ],
+      "profile": "quick"
     }
   },
   "input": "/home/abhikeern/project/7_OSI/2_stage_relax/outputs/relaxed.extxyz",
@@ -85,9 +101,9 @@
     "mace_mp_small"
   ],
   "counts": {
-    "Trusted": 5,
-    "Needs DFT": 15,
-    "needs_dft_high_priority": 1
+    "Trusted": 0,
+    "Needs DFT": 20,
+    "needs_dft_high_priority": 3
   },
-  "log_file": "/home/abhikeern/project/7_OSI/3_stage_trust_check/logs/stage3_20261022_221112.log"
+  "log_file": "/home/abhikeern/project/7_OSI/3_stage_trust_check/logs/stage3_20261022_223809.log"
 }

@@ -16,10 +16,9 @@
       "script": "batch_01.slurm",
       "cores": 16,
       "calcs": [
-        "s003_30GPa",
-        "s012_30GPa"
+        "s003_30GPa"
       ],
-      "est_cost": 13200
+      "est_cost": 10800
     },
     {
       "batch": 2,
@@ -27,10 +26,9 @@
       "script": "batch_02.slurm",
       "cores": 16,
       "calcs": [
-        "s004_30GPa",
-        "s010_30GPa"
+        "s011_30GPa"
       ],
-      "est_cost": 12500
+      "est_cost": 8000
     },
     {
       "batch": 3,
@@ -38,87 +36,9 @@
       "script": "batch_03.slurm",
       "cores": 16,
       "calcs": [
-        "s011_30GPa",
         "s006_30GPa"
       ],
-      "est_cost": 11125
-    },
-    {
-      "batch": 4,
-      "job_name": "hp_b04",
-      "script": "batch_04.slurm",
-      "cores": 16,
-      "calcs": [
-        "s017_30GPa",
-        "s013_30GPa"
-      ],
-      "est_cost": 11125
-    },
-    {
-      "batch": 5,
-      "job_name": "hp_b05",
-      "script": "batch_05.slurm",
-      "cores": 16,
-      "calcs": [
-        "s016_30GPa",
-        "s008_30GPa"
-      ],
-      "est_cost": 12675
-    },
-    {
-      "batch": 6,
-      "job_name": "hp_b06",
-      "script": "batch_06.slurm",
-      "cores": 16,
-      "calcs": [
-        "s001_30GPa",
-        "s009_30GPa"
-      ],
-      "est_cost": 12900
-    },
-    {
-      "batch": 7,
-      "job_name": "hp_b07",
-      "script": "batch_07.slurm",
-      "cores": 16,
-      "calcs": [
-        "s018_30GPa",
-        "s002_30GPa"
-      ],
-      "est_cost": 12500
-    },
-    {
-      "batch": 8,
-      "job_name": "hp_b08",
-      "script": "batch_08.slurm",
-      "cores": 16,
-      "calcs": [
-        "s000_30GPa",
-        "s019_30GPa"
-      ],
-      "est_cost": 12500
-    },
-    {
-      "batch": 9,
-      "job_name": "hp_b09",
-      "script": "batch_09.slurm",
-      "cores": 16,
-      "calcs": [
-        "s014_30GPa",
-        "s015_30GPa"
-      ],
-      "est_cost": 11800
-    },
-    {
-      "batch": 10,
-      "job_name": "hp_b10",
-      "script": "batch_10.slurm",
-      "cores": 16,
-      "calcs": [
-        "s005_30GPa",
-        "s007_30GPa"
-      ],
-      "est_cost": 10800
+      "est_cost": 3125
     }
   ],
   "time_limit": "01:00:00",
