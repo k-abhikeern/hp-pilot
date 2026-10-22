@@ -30,7 +30,6 @@ A calibration tool fits the trust limits per material on the DFT results.
 
 - In all three materials, the pipeline's DFT step lands on the phase the literature reports. For silicon, standard DFT puts simple hexagonal and beta-tin 3.5 meV/atom apart, a tie, as expected near their transition.
 - Used alone, the ML model would have picked the wrong NaCl phase, off by more than 1 eV/atom. The trust check flagged every NaCl structure, so this error never went unchecked.
-- **Honest failure:** for Si, the 8 structures the all-MACE committee called Trusted were 75 to 130 meV/atom off. The committee shared a blind spot. It was caught because the pipeline always sends Trusted controls to DFT.
 - **Transition pressure:** the NaCl rocksalt → CsCl-type transition comes out at **24.6 GPa** in DFT (0 K, quick settings); the ML model gives 23.5 GPa but underestimates how fast CsCl-type gains with pressure (19 vs 111 meV/atom at 50 GPa).
 - **Fourth test, database structure:** the HPCSD database (arXiv 2605.14471) gives an MgVH₅ structure at 32 to 90 GPa. DFT keeps that structure at every pressure, so the database and our settings agree. ML is wrong at every pressure, by 160 to 230 meV/atom, and its volume trend differs from DFT. One structure is not enough to calibrate, but it shows the trust check flags a real failure.
 - **What did not work:** setting the trust limit from Materials Project's 0 GPa structures did not transfer to high pressure. We dropped it.
