@@ -1,0 +1,97 @@
+{
+  "stage": 4,
+  "config": {
+    "project": {
+      "name": "hp-pilot",
+      "composition": "Si",
+      "pressure_gpa": 15.0,
+      "seed": 42
+    },
+    "stage1": {
+      "generator": "pyxtal_random",
+      "n_structures": 20,
+      "formula_units": [
+        2,
+        4,
+        8
+      ],
+      "space_groups": [],
+      "volume_factor": 1.0,
+      "max_attempts": 500,
+      "min_bond_ratio": 0.7
+    },
+    "stage2": {
+      "input": "",
+      "model": "mace_mp_medium",
+      "pressures_gpa": [],
+      "optimizer": "FIRE",
+      "fmax": 0.05,
+      "max_steps": 300,
+      "n_threads": 8,
+      "save_trajectories": false
+    },
+    "stage3": {
+      "input": "",
+      "models": [
+        "mace_mp_medium",
+        "mace_mpa_medium",
+        "mace_mp_small"
+      ],
+      "checks": [
+        "relax_status",
+        "enthalpy_spread",
+        "pressure_deviation",
+        "force",
+        "short_bond",
+        "collapse"
+      ],
+      "n_threads": 8,
+      "max_enthalpy_spread_meV": 20.0,
+      "max_pressure_deviation_gpa": 3.0,
+      "max_force_eV_A": 0.25,
+      "min_bond_ratio": 0.8,
+      "collapse_fraction": 0.75,
+      "dft_window_meV": 100.0,
+      "make_plot": true
+    },
+    "stage4": {
+      "input": "",
+      "max_structures": 3,
+      "ids": [],
+      "trusted_controls": 1,
+      "profile": "quick",
+      "checks": [
+        "potcars",
+        "encut",
+        "pstress",
+        "isif",
+        "spin"
+      ],
+      "potcar_dir": "../0_stage_softwares_resources_etc/potcars",
+      "xrd_wavelength": "CuKa",
+      "partition": "defq",
+      "n_batches": 0,
+      "max_parallel_jobs": 4,
+      "cores_per_job": 0,
+      "time_limit": "01:00:00",
+      "vasp_dir": "/opt/ohpc/pub/software/vasp.6.4.2",
+      "vasp_exe": "vasp_std",
+      "make_plots": true
+    }
+  },
+  "profile": "quick",
+  "input": "/home/abhikeern/project/7_OSI/3_stage_trust_check/outputs/needs_dft.extxyz",
+  "n_calcs": 4,
+  "n_ready": 4,
+  "jobs": 4,
+  "cluster_status": {
+    "available": true,
+    "partition": "defq",
+    "idle_cores": 200,
+    "allocated_cores": 456,
+    "unavailable_cores": 48,
+    "total_cores": 704,
+    "pending_jobs": 61
+  },
+  "log_file": "/home/abhikeern/project/7_OSI/4_stage_incar_build/logs/stage4_20261022_183235.log"
+}

@@ -1,0 +1,18 @@
+# VASP POTCARs are licensed: never publish them
+POTCAR
+POTCAR*
+0_stage_softwares_resources_etc/potcars/
+
+# Large VASP run folders (results are summarised in 5_stage_vasp_run/outputs/)
+5_stage_vasp_run/runs/
+4_stage_incar_build/outputs/calcs/
+
+# Logs and machine-specific files
+*/logs/
+0_stage_softwares_resources_etc/env_install.log
+__pycache__/
+*.pyc
+
+# Paper abstracts retrieved from Valency (copyright stays with the publishers); links are in the report
+6_stage_literature_check/outputs/raw_valency/
+6_stage_literature_check/outputs/valency_results.json

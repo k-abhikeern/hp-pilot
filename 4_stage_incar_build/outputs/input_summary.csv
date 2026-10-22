@@ -1,0 +1,5 @@
+name,id,pressure_GPa,label,space_group,n_atoms,potcars,ENCUT,kpoint_grid,est_cost,batch,checks_passed,check_failures,ml_model,ml_enthalpy_eV_per_atom,reasons
+s019_15GPa,s019,15.0,Needs DFT,I4_1/amd,4,Si,319.0,4x4x7,1792,2,True,,mace_mp_medium,-3.782537396833586,models disagree on enthalpy by 82 meV/atom; models disagree on pressure by 3.5 GPa
+s015_15GPa,s015,15.0,Needs DFT,P6/mmm,2,Si,319.0,8x8x4,1024,4,True,,mace_mp_medium,-3.7704792592969993,models disagree on enthalpy by 75 meV/atom
+s000_15GPa,s000,15.0,Needs DFT,P6/mmm,8,Si,319.0,4x4x4,4096,1,True,,mace_mp_medium,-3.7704647684786865,models disagree on enthalpy by 75 meV/atom
+s009_15GPa,s009,15.0,Trusted,Pm-3m,4,Si,319.0,5x5x4,1600,3,True,,mace_mp_medium,-3.7706104397211875,none

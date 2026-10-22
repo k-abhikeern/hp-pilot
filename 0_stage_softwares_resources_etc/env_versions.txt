@@ -1,0 +1,5 @@
+ase          3.29.0
+pymatgen     2026.9.24
+pyxtal       1.1.5
+mace-torch   0.3.16
+torch        2.14.1+cpu  (CUDA available: False)

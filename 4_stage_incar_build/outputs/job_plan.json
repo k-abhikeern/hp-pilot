@@ -1,0 +1,56 @@
+{
+  "cluster_status": {
+    "available": true,
+    "partition": "defq",
+    "idle_cores": 200,
+    "allocated_cores": 456,
+    "unavailable_cores": 48,
+    "total_cores": 704,
+    "pending_jobs": 61
+  },
+  "cores_per_job": 8,
+  "jobs": [
+    {
+      "batch": 1,
+      "job_name": "hp_b01",
+      "script": "batch_01.slurm",
+      "cores": 8,
+      "calcs": [
+        "s000_15GPa"
+      ],
+      "est_cost": 4096
+    },
+    {
+      "batch": 2,
+      "job_name": "hp_b02",
+      "script": "batch_02.slurm",
+      "cores": 8,
+      "calcs": [
+        "s019_15GPa"
+      ],
+      "est_cost": 1792
+    },
+    {
+      "batch": 3,
+      "job_name": "hp_b03",
+      "script": "batch_03.slurm",
+      "cores": 8,
+      "calcs": [
+        "s009_15GPa"
+      ],
+      "est_cost": 1600
+    },
+    {
+      "batch": 4,
+      "job_name": "hp_b04",
+      "script": "batch_04.slurm",
+      "cores": 8,
+      "calcs": [
+        "s015_15GPa"
+      ],
+      "est_cost": 1024
+    }
+  ],
+  "time_limit": "01:00:00",
+  "profile": "quick"
+}

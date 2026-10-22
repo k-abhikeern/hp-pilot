@@ -1,0 +1,21 @@
+id,pressure_GPa,label,reasons,dft_priority,dH_meV_per_atom,enthalpy_spread_meV,max_pressure_dev_GPa,max_force_eV_A,min_bond_ratio,volume_A3_per_atom,volume_vs_median,status,H_rel_meV_mace_mp_medium,H_rel_meV_mace_mpa_medium,H_rel_meV_mace_mp_small,P_GPa_mace_mp_medium,P_GPa_mace_mpa_medium,P_GPa_mace_mp_small
+s019,15.0,Needs DFT,models disagree on enthalpy by 82 meV/atom; models disagree on pressure by 3.5 GPa,high,0.0,81.722,3.538,0.0,1.082,13.692,1.004,ok,-14.224,-82.888,-1.166,14.666,18.538,15.699
+s009,15.0,Trusted,,,11.927,2.787,0.448,0.0,1.093,14.287,1.048,ok,-2.297,-0.041,-2.828,15.216,15.332,14.552
+s006,15.0,Trusted,,,11.958,2.511,1.1,0.0,1.094,14.343,1.052,ok,-2.266,-0.055,-2.567,14.559,14.701,13.9
+s001,15.0,Trusted,,,11.964,2.531,1.06,0.022,1.093,14.34,1.052,ok,-2.259,-0.042,-2.573,14.599,14.74,13.94
+s015,15.0,Needs DFT,models disagree on enthalpy by 75 meV/atom,high,12.058,75.009,1.899,0.0,1.09,13.533,0.993,ok,-2.165,-77.175,-4.031,15.224,16.899,16.431
+s000,15.0,Needs DFT,models disagree on enthalpy by 75 meV/atom,high,12.073,75.423,1.256,0.054,1.088,13.576,0.996,ok,-2.151,-77.574,-5.148,14.816,16.256,15.849
+s007,15.0,Trusted,,,12.106,2.734,0.447,0.005,1.092,14.273,1.047,ok,-2.118,0.041,-2.693,15.371,15.447,14.706
+s014,15.0,Trusted,,,12.226,2.513,0.483,0.029,1.093,14.272,1.047,ok,-1.998,-0.143,-2.656,15.356,15.483,14.692
+s016,15.0,Trusted,,,12.361,0.641,0.353,0.067,1.092,14.261,1.046,ok,-1.862,-1.767,-2.408,15.353,15.347,14.706
+s004,15.0,Trusted,,,12.765,1.592,1.005,0.051,1.094,14.327,1.051,ok,-1.459,-0.424,-2.015,14.653,14.833,13.995
+s013,15.0,Trusted,,,15.682,16.762,0.352,0.153,1.091,14.183,1.04,ok,1.459,-15.304,1.166,15.159,15.034,14.648
+s003,15.0,Needs DFT,models disagree on enthalpy by 25 meV/atom; models disagree on pressure by 4.3 GPa; another model sees forces of 0.48 eV/A,high,59.786,25.074,4.258,0.479,1.075,13.552,0.994,ok,45.563,23.37,48.444,15.234,19.258,15.796
+s012,15.0,Needs DFT,models disagree on enthalpy by 67 meV/atom; models disagree on pressure by 9.7 GPa,high,98.313,66.689,9.657,0.008,1.103,12.738,0.934,ok,84.09,38.487,105.176,14.686,24.657,19.268
+s005,15.0,Needs DFT,models disagree on enthalpy by 33 meV/atom; models disagree on pressure by 4.6 GPa,high,99.958,32.64,4.612,0.0,1.165,12.237,0.897,ok,85.735,53.095,74.125,14.944,17.734,19.612
+s011,15.0,Needs DFT,models disagree on enthalpy by 34 meV/atom; models disagree on pressure by 4.5 GPa,low,100.309,33.584,4.532,0.021,1.161,12.246,0.898,ok,86.086,52.502,74.114,14.881,18.344,19.532
+s017,15.0,Needs DFT,models disagree on enthalpy by 73 meV/atom; models disagree on pressure by 4.1 GPa,low,116.107,73.373,4.113,0.0,1.2,12.417,0.911,ok,101.883,36.223,109.596,14.822,18.296,19.113
+s008,15.0,Needs DFT,models disagree on enthalpy by 70 meV/atom; models disagree on pressure by 6.0 GPa; another model sees forces of 0.35 eV/A,low,116.995,69.51,5.96,0.349,1.078,12.629,0.926,ok,102.772,59.182,128.692,15.104,20.96,19.723
+s002,15.0,Needs DFT,models disagree on enthalpy by 46 meV/atom; models disagree on pressure by 4.8 GPa; another model sees forces of 0.35 eV/A,low,121.378,46.367,4.775,0.351,1.046,13.168,0.966,ok,107.154,67.105,113.472,14.922,19.775,16.358
+s018,15.0,Needs DFT,models disagree on enthalpy by 75 meV/atom; models disagree on pressure by 4.5 GPa,low,182.232,75.005,4.474,0.222,1.069,14.236,1.044,ok,168.008,145.222,220.227,15.133,19.474,17.292
+s010,15.0,Needs DFT,models disagree on enthalpy by 38981 meV/atom; models disagree on pressure by 12392.8 GPa; volume collapsed (0.57 of typical),low,904.724,38980.576,12392.764,0.0,0.894,7.82,0.574,ok,890.5,5842.319,39871.076,15.278,820.626,12407.764

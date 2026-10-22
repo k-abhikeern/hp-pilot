@@ -1,0 +1,26 @@
+{
+  "reviewed_by": "Claude (agent), 2026-10-22, after reading every evidence sentence; check before relying on it",
+  "exclude": {
+    "Cmcm": {
+      "33543966": "about Cmcm SiO3, a silicon oxide, not elemental silicon"
+    },
+    "I4/mmm": {
+      "23679617": "its body-centred tetragonal phase has I4_1/a symmetry, not I4/mmm"
+    },
+    "Fm-3m": {
+      "2511.22899v1": "about fcc Fe-Si alloys, not elemental silicon"
+    },
+    "P6_3/mmc": {
+      "2511.22899v1": "about hcp Fe-Si alloys, not elemental silicon",
+      "1501.03850v1": "the hcp phase is beryllium; silicon is only the motivation"
+    }
+  },
+  "include": {
+    "Pm-3m": {
+      "30978067": {"reason": "predicts simple cubic silicon above 3.89 TPa (fcc -> bcc -> sc); the sentence does not repeat 'silicon' but the paper is about silicon", "pressures_gpa": [3890]}
+    },
+    "Fm-3m": {
+      "30978067": {"reason": "predicts fcc silicon transforming to bcc at 2.87 TPa; the sentence does not repeat 'silicon' but the paper is about silicon", "pressures_gpa": [2870]}
+    }
+  }
+}

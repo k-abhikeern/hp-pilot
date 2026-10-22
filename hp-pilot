@@ -1,0 +1,4 @@
+#!/bin/sh
+# HP-Pilot launcher: uses the osi conda env. Example:  ./hp-pilot run --composition Si --pressure 15
+PY="${HP_PILOT_PYTHON:-$HOME/miniconda3/envs/osi/bin/python}"
+exec "$PY" "$(dirname "$0")/hp_pilot.py" "$@"

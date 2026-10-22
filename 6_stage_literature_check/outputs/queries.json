@@ -1,0 +1,225 @@
+{
+  "composition": "Si",
+  "material_name": "silicon",
+  "pressure_gpa": 15.0,
+  "general_query": "silicon high pressure phase transitions crystal structure",
+  "phases": [
+    {
+      "space_group": "I4_1/amd",
+      "name": "beta-tin",
+      "search_terms": [
+        "beta-tin",
+        "\u03b2-tin",
+        "beta-Sn",
+        "\u03b2-Sn",
+        "beta tin",
+        "I4_1/amd",
+        "I41/amd"
+      ],
+      "query": "silicon beta-tin phase high pressure",
+      "structures": [
+        "s019"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 0.0,
+      "dft_dH_meV": 12.2
+    },
+    {
+      "space_group": "Pm-3m",
+      "name": "simple cubic",
+      "search_terms": [
+        "simple cubic",
+        "simple-cubic",
+        "Pm-3m",
+        "Pm-3m"
+      ],
+      "query": "silicon simple cubic phase high pressure",
+      "structures": [
+        "s009",
+        "s006",
+        "s001",
+        "s007",
+        "s014",
+        "s010"
+      ],
+      "trust_labels": [
+        "Needs DFT",
+        "Trusted"
+      ],
+      "best_ml_dH_meV": 11.9,
+      "dft_dH_meV": 165.0
+    },
+    {
+      "space_group": "P6/mmm",
+      "name": "simple hexagonal",
+      "search_terms": [
+        "simple hexagonal",
+        "simple-hexagonal",
+        "sh phase",
+        "P6/mmm",
+        "P6/mmm"
+      ],
+      "query": "silicon simple hexagonal phase high pressure",
+      "structures": [
+        "s015",
+        "s000"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 12.1,
+      "dft_dH_meV": 0.0
+    },
+    {
+      "space_group": "Cmcm",
+      "name": "Cmcm",
+      "search_terms": [
+        "Cmcm",
+        "Cmcm",
+        "Cmcm"
+      ],
+      "query": "silicon Cmcm phase high pressure",
+      "structures": [
+        "s016",
+        "s013"
+      ],
+      "trust_labels": [
+        "Trusted"
+      ],
+      "best_ml_dH_meV": 12.4,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P4/nmm",
+      "name": "P4/nmm",
+      "search_terms": [
+        "P4/nmm",
+        "P4/nmm"
+      ],
+      "query": "silicon P4/nmm phase high pressure",
+      "structures": [
+        "s004"
+      ],
+      "trust_labels": [
+        "Trusted"
+      ],
+      "best_ml_dH_meV": 12.8,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "I4/mmm",
+      "name": "body-centered tetragonal",
+      "search_terms": [
+        "body-centered tetragonal",
+        "body-centred tetragonal",
+        "bct",
+        "I4/mmm",
+        "I4/mmm"
+      ],
+      "query": "silicon body-centered tetragonal phase high pressure",
+      "structures": [
+        "s003",
+        "s012"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 59.8,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "Fm-3m",
+      "name": "face-centered cubic",
+      "search_terms": [
+        "face-centered cubic",
+        "face-centred cubic",
+        "fcc",
+        "Fm-3m",
+        "Fm-3m"
+      ],
+      "query": "silicon face-centered cubic phase high pressure",
+      "structures": [
+        "s005",
+        "s011"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 100.0,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P6_3/mmc",
+      "name": "hexagonal close-packed",
+      "search_terms": [
+        "hexagonal close-packed",
+        "hexagonal close packed",
+        "hcp",
+        "P6_3/mmc",
+        "P63/mmc"
+      ],
+      "query": "silicon hexagonal close-packed phase high pressure",
+      "structures": [
+        "s017"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 116.1,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P6_3/m",
+      "name": "P6_3/m",
+      "search_terms": [
+        "P6_3/m",
+        "P63/m"
+      ],
+      "query": "silicon P6_3/m phase high pressure",
+      "structures": [
+        "s008"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 117.0,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P4_2/mmc",
+      "name": "P4_2/mmc",
+      "search_terms": [
+        "P4_2/mmc",
+        "P42/mmc"
+      ],
+      "query": "silicon P4_2/mmc phase high pressure",
+      "structures": [
+        "s002"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 121.4,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P6_322",
+      "name": "P6_322",
+      "search_terms": [
+        "P6_322",
+        "P6322"
+      ],
+      "query": "silicon P6_322 phase high pressure",
+      "structures": [
+        "s018"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 182.2,
+      "dft_dH_meV": null
+    }
+  ]
+}

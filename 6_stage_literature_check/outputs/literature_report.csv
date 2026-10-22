@@ -1,0 +1,12 @@
+space_group,name,structures,trust_labels,best_ml_dH_meV,dft_dH_meV,status,n_papers,reported_pressures_GPa,top_paper_urls
+I4_1/amd,beta-tin,s019,Needs DFT,0.0,12.2,Known,12,7.5 10.5 14.0 16.2,https://arxiv.org/abs/1006.3253 https://arxiv.org/abs/0908.4477 https://pubmed.ncbi.nlm.nih.gov/23679617/
+Pm-3m,simple cubic,s009 s006 s001 s007 s014 s010,Needs DFT/Trusted,11.9,165.0,Known,1,3890,https://pubmed.ncbi.nlm.nih.gov/30978067/
+P6/mmm,simple hexagonal,s015 s000,Needs DFT,12.1,0.0,Known,4,,https://pubmed.ncbi.nlm.nih.gov/12633242/ https://arxiv.org/abs/cond-mat/0308314 https://arxiv.org/abs/cond-mat/9312014
+Cmcm,Cmcm,s016 s013,Trusted,12.4,,Not found,0,,
+P4/nmm,P4/nmm,s004,Trusted,12.8,,Not found,0,,
+I4/mmm,body-centered tetragonal,s003 s012,Needs DFT,59.8,,Not found,0,,
+Fm-3m,face-centered cubic,s005 s011,Needs DFT,100.0,,Known,2,93.0 389.0 2870,https://pubmed.ncbi.nlm.nih.gov/30978067/ https://pubmed.ncbi.nlm.nih.gov/36867795/
+P6_3/mmc,hexagonal close-packed,s017,Needs DFT,116.1,,Known,1,93.0 389.0,https://pubmed.ncbi.nlm.nih.gov/36867795/
+P6_3/m,P6_3/m,s008,Needs DFT,117.0,,Not found,0,,
+P4_2/mmc,P4_2/mmc,s002,Needs DFT,121.4,,Not found,0,,
+P6_322,P6_322,s018,Needs DFT,182.2,,Not found,0,,

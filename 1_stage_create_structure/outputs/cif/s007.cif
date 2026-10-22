@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       Si4
+_chemical_formula_sum              "Si4"
+_cell_length_a       5.972247835828276
+_cell_length_b       4.669733484295465
+_cell_length_c       3.5849517960864845
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Si  Si1       1.0  0.9280511985818017  0.25614437211590424  0.048724525544760575  1.0000
+  Si  Si2       1.0  0.07194880141819837  0.7438556278840958  0.5487245255447606  1.0000
+  Si  Si3       1.0  0.07194880141819837  0.25614437211590424  0.4512754744552394  1.0000
+  Si  Si4       1.0  0.9280511985818017  0.7438556278840956  0.9512754744552394  1.0000
