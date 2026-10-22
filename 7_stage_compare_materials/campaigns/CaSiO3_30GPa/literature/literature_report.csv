@@ -1,0 +1,16 @@
+space_group,name,structures,trust_labels,best_ml_dH_meV,dft_dH_meV,status,n_papers,reported_pressures_GPa,top_paper_urls
+unknown,unknown,s003,Needs DFT,-40572089092.9,,Not found,0,,
+Pm-3m,cubic perovskite,s011 s006 s013,Needs DFT,0.0,,Known,12,,https://pubmed.ncbi.nlm.nih.gov/31413365/ https://pubmed.ncbi.nlm.nih.gov/35264761/ https://arxiv.org/abs/2011.12681
+Pmmm,Pmmm,s005,Needs DFT,196.7,,Not found,0,,
+P2/m,P2/m,s016,Needs DFT,198.8,,Not found,0,,
+P1,P1,s007,Needs DFT,286.7,,Not found,0,,
+C2,C2,s012,Needs DFT,594.3,,Not found,0,,
+Imm2,Imm2,s015 s009,Needs DFT,680.1,,Not found,0,,
+P6_3/mmc,P6_3/mmc,s004 s000,Needs DFT,1376.4,,Not found,0,,
+P4/mbm,tetragonal perovskite,s008,Needs DFT,1534.3,,Known,6,,https://pubmed.ncbi.nlm.nih.gov/31413365/ https://pubmed.ncbi.nlm.nih.gov/35264761/ https://arxiv.org/abs/2401.14588
+Cc,Cc,s002,Needs DFT,1578.9,,Not found,0,,
+P4_2,P4_2,s014,Needs DFT,1872.2,,Not found,0,,
+I-4m2,I-4m2,s001 s018,Needs DFT,2064.5,,Not found,0,,
+P-4m2,P-4m2,s019,Needs DFT,2933.3,,Not found,0,,
+P4/mmm,P4/mmm,s017,Needs DFT,3529.3,,Not found,0,,
+P6/mmm,P6/mmm,s010,Needs DFT,4736.7,,Not found,0,,

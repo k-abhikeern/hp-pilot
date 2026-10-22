@@ -26,13 +26,13 @@ One command: `./hp-pilot run --composition Si --pressure 15 --submit`. In two mi
 
 We ran DFT on all twenty, first with quick settings, then with tight ones; each job took a few minutes. The two lowest phases are simple hexagonal and beta-tin, only 3.5 meV apart, practically a tie, and both were flagged for DFT, correctly. And here is the most important point: all eight structures the committee called Trusted were wrong, by 75 to 130 meV per atom, even with tight settings. All three models were MACE models, and they shared the same blind spot. We know this only because the pipeline always sends some Trusted structures to DFT as controls.
 
-**[2:40 to 3:15] Literature check. Screen: `literature_check.png`.**
+**[2:40 to 3:20] Three materials and the literature. Screen: `7_stage_compare_materials/outputs/overview.png`.**
 
-Finally, the Claude agent searched the literature through Valency: 73 papers. It reviewed every match and threw out false ones, like a paper about silicon oxide. The result: beta-tin and simple hexagonal, our two lowest phases, are exactly what papers report near 15 GPa. Phases papers see only at hundreds of gigapascals came out high in our ranking too.
+We then tested two more materials with known answers: table salt at 40 gigapascals, and calcium silicate perovskite, a key mineral of Earth's mantle. The Claude agent checked every prediction against the literature through Valency, and threw out false matches, for example papers that use "NaCl-type" for other compounds. In all three cases, the DFT step lands on the phase the literature reports: simple hexagonal silicon, CsCl-type salt, and cubic perovskite. The ML model alone would have picked the wrong salt structure, off by more than one electronvolt per atom; the trust check flagged all of those structures.
 
-**[3:15 to 3:45] Honest limits and next steps. Screen: limits list.**
+**[3:20 to 3:45] Honest limits and next steps. Screen: limits list.**
 
-So far this is one material at one pressure, and our committee used one model family. Next we will mix families, including fine-tuned high-pressure models, and recalibrate the trust limits on these DFT results.
+Our committee used one model family, and its limits were tuned on silicon, so it flagged everything for the compounds. Next we will mix families, including fine-tuned high-pressure models, and recalibrate the trust limits on these DFT results.
 
 **[3:45 to 4:00] Close. Screen: repository link.**
 

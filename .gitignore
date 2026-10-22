@@ -16,3 +16,7 @@ __pycache__/
 # Paper abstracts retrieved from Valency (copyright stays with the publishers); links are in the report
 6_stage_literature_check/outputs/raw_valency/
 6_stage_literature_check/outputs/valency_results.json
+
+# Paper abstracts inside archived campaigns (links stay in each literature report)
+7_stage_compare_materials/campaigns/*/literature/raw_valency/
+7_stage_compare_materials/campaigns/*/literature/valency_results.json

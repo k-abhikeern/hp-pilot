@@ -37,4 +37,12 @@ def main(files):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    import argparse
+    parser = argparse.ArgumentParser(description="Merge saved Valency results.")
+    parser.add_argument("files", nargs="+")
+    parser.add_argument("--out", help="output file (default: outputs/valency_results.json); "
+                                      "for a stage 7 campaign use <campaign>/literature/valency_results.json")
+    args = parser.parse_args()
+    if args.out:
+        OUT = Path(args.out)
+    main(args.files)

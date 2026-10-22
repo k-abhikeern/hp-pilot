@@ -3,17 +3,16 @@
   "config": {
     "project": {
       "name": "hp-pilot",
-      "composition": "Si",
-      "pressure_gpa": 15.0,
+      "composition": "CaSiO3",
+      "pressure_gpa": 30.0,
       "seed": 42
     },
     "stage1": {
       "generator": "pyxtal_random",
       "n_structures": 20,
       "formula_units": [
-        2,
-        4,
-        8
+        1,
+        2
       ],
       "space_groups": [],
       "volume_factor": 1.0,
@@ -82,13 +81,13 @@
   "input": "/home/abhikeern/project/7_OSI/1_stage_create_structure/outputs/structures.extxyz",
   "model": "mace_mp_medium",
   "pressures_gpa": [
-    15.0
+    30.0
   ],
   "counts": {
-    "ok": 20,
-    "not_converged": 0,
+    "ok": 18,
+    "not_converged": 2,
     "exploded": 0,
     "failed": 0
   },
-  "log_file": "/home/abhikeern/project/7_OSI/2_stage_relax/logs/stage2_20261022_183035.log"
+  "log_file": "/home/abhikeern/project/7_OSI/2_stage_relax/logs/stage2_20261022_190148.log"
 }

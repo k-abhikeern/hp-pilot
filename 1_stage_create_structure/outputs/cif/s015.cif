@@ -1,12 +1,12 @@
 data_image0
-_chemical_formula_structural       Si2
-_chemical_formula_sum              "Si2"
-_cell_length_a       2.8434214877069217
-_cell_length_b       2.8434214877069217
-_cell_length_c       9.876061611934654
+_chemical_formula_structural       O6Si2Ca2
+_chemical_formula_sum              "O6 Si2 Ca2"
+_cell_length_a       5.04435470628626
+_cell_length_b       4.847520427303235
+_cell_length_c       5.371509409064699
 _cell_angle_alpha    90.0
 _cell_angle_beta     90.0
-_cell_angle_gamma    119.99999999999997
+_cell_angle_gamma    90.0
 
 _space_group_name_H-M_alt    "P 1"
 _space_group_IT_number       1
@@ -23,5 +23,13 @@ loop_
   _atom_site_fract_y
   _atom_site_fract_z
   _atom_site_occupancy
-  Si  Si1       1.0  0.0  0.0  0.665583359743481  1.0000
-  Si  Si2       1.0  0.0  0.0  0.16558335974348104  1.0000
+  O   O1        1.0  0.3341664823801498  0.15579444337799186  0.11635545763931822  1.0000
+  O   O2        1.0  0.6658335176198502  0.8442055566220081  0.11635545763931823  1.0000
+  O   O3        1.0  0.8341664823801499  0.34420555662200814  0.6163554576393182  1.0000
+  O   O4        1.0  0.1658335176198502  0.6557944433779919  0.6163554576393182  1.0000
+  O   O5        1.0  0.5  0.0  0.21187789868769236  1.0000
+  O   O6        1.0  0.0  0.5  0.7118778986876924  1.0000
+  Si  Si1       1.0  0.0  0.0  0.12870881686074087  1.0000
+  Si  Si2       1.0  0.5  0.5  0.6287088168607409  1.0000
+  Ca  Ca1       1.0  0.5  0.0  0.7415022213657174  1.0000
+  Ca  Ca2       1.0  0.0  0.5  0.24150222136571747  1.0000

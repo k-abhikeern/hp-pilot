@@ -2,36 +2,43 @@
 
 ## Problem
 
-Machine-learning potentials make crystal-structure searches at high pressure fast, but they are trained mostly near ambient conditions and their errors grow with pressure. A search that trusts them can rank the wrong phase as most stable. DFT is accurate but too slow to run on every candidate, and setting it up for high pressure takes expertise.
+Machine-learning potentials make crystal-structure searches at high pressure fast, but they are trained mostly near ambient conditions and their errors grow with pressure. A search that trusts them can pick the wrong phase. DFT is accurate but too slow to run on every candidate, and setting it up for high pressure takes expertise.
 
 ## What we built
 
-HP-Pilot is an open, six-stage pipeline run with one command (`./hp-pilot run --composition Si --pressure 15 --submit`):
+HP-Pilot is an open, seven-stage pipeline run with one command (`./hp-pilot run --composition NaCl --pressure 40 --submit`) on a standard CPU cluster:
 
 1. random symmetric candidates (PyXtal);
 2. relaxation at the target pressure with a MACE foundation model;
 3. a trust check: a committee of models plus physics checks labels each structure Trusted or Needs DFT, with reasons;
 4. VASP inputs with high-pressure settings (pymatgen), hard input checks, and a job plan that reads the cluster load and explains itself;
 5. SLURM submission and a DFT-versus-ML comparison;
-6. a literature check: the Claude agent searches Valency, reviews every match, and the pipeline reports which predicted phases are known and at what pressures.
+6. a literature check: the Claude agent searches Valency, reviews every match (excluding false ones with written reasons), and reports which predicted phases are known and at what pressures;
+7. a cross-material comparison with pymatgen structure matching, symmetry analysis and simulated XRD.
 
-## Results (silicon, 15 GPa, CPU cluster)
+## Results: three test materials with known answers (60 structures, all checked with DFT)
 
-- 20 candidates, ML relaxation in about 2 minutes; all 20 then checked with DFT twice, with quick and with standard settings (1 to 4 minutes per job).
-- DFT puts simple hexagonal and beta-tin as the lowest phases, only 3.5 meV/atom apart with standard settings, so practically degenerate. The literature check (73 papers via Valency) independently reports exactly these two phases around this pressure (7.5 to 16 GPa). Both were flagged Needs DFT, correctly.
-- **Key finding:** all 8 structures the committee called Trusted were wrong by 75 to 130 meV/atom (standard settings; ML put them about 12 meV/atom above the best, DFT 87 to 144). The three committee members were all MACE models and shared the same blind spot. The pipeline caught this because it always sends Trusted controls to DFT.
-- Quick and standard DFT agree on the overall ranking (rank correlation 0.91; mean change 25 meV/atom), so quick settings are good enough for screening.
+| | Si, 15 GPa | NaCl, 40 GPa | CaSiO₃, 30 GPa |
+|---|---|---|---|
+| DFT winner | simple hexagonal | CsCl-type (B2) | cubic perovskite |
+| Reported in literature (Valency) | yes, 4 papers | yes, 10 papers | yes, 12 papers |
+| ML-only winner | beta-tin (+12 meV/atom in DFT) | wrong phase (+300 meV/atom) | correct |
+| Median ML error | 76 meV/atom | 796 meV/atom | 54 meV/atom |
 
-[Figure: `5_stage_vasp_run/outputs/dft_vs_ml.png`. ML vs DFT enthalpy above the best structure; Trusted structures (green) sit far above the ML = DFT line.]
+- In all three materials, the pipeline's DFT step lands on the phase the literature reports. For silicon, standard DFT puts simple hexagonal and beta-tin 3.5 meV/atom apart, a tie, as expected near their transition.
+- Used alone, the ML model would have picked the wrong NaCl phase, off by more than 1 eV/atom. The trust check flagged every NaCl structure, so this error never went unchecked.
+- **Honest failure:** for Si, the 8 structures the all-MACE committee called Trusted were 75 to 130 meV/atom off. The committee shared a blind spot. It was caught because the pipeline always sends Trusted controls to DFT.
+
+[Figure: `7_stage_compare_materials/outputs/overview.png`. Per material: ML vs DFT ranking of phases, the DFT winner's structure, and its simulated XRD.]
 
 ## Why it matters
 
-- **Labs:** DFT time goes where it is needed, and every decision is logged with a reason.
-- **Community:** runs from one command on a standard CPU cluster; every stage has a plug-in socket for new generators, models, checks and job templates.
-- **Honest validation:** DFT controls and a literature check are built in, so the tool can show when it is wrong.
+- **Labs:** DFT time goes where it is needed; every decision (trust labels, job split, literature matches) is logged with a reason.
+- **Community:** one command on a CPU cluster; each stage has a plug-in socket for new generators, models, checks and job templates.
+- **Built to show when it is wrong:** DFT controls, input checks and a reviewed literature check caught real errors in the model and in our own code.
 
-## Limits and next steps
+## Next steps
 
-Committee limited to one model family; trust limits are first guesses; one material at one pressure so far. Next: mix model families (MatterSim, eSEN, fine-tuned high-pressure models from Loew et al. 2026), recalibrate the limits on these DFT results, and test more materials and pressures.
+Mix model families in the committee (MatterSim, eSEN, fine-tuned high-pressure models from Loew et al. 2026); calibrate the trust limits per chemistry on these 52 DFT results; standard DFT for all materials; transition pressures from scans over pressure.
 
 Code: [repository link]

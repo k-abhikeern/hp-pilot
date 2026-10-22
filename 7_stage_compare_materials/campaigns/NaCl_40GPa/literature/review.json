@@ -1,0 +1,39 @@
+{
+  "reviewed_by": "Claude (agent), 2026-10-22, after reading every evidence sentence; check before relying on it",
+  "exclude": {
+    "Pm-3m": {
+      "38848357": "about MgO; 'NaCl' names its structure type",
+      "23180773": "about MgO; 'sodium chloride' names its structure type",
+      "22076374": "about FeO; 'NaCl-type' structure",
+      "1301.6254v1": "about AgBr; 'NaCl-type' structure",
+      "16471718": "about AgCl",
+      "34355975": "about KCl; B1(NaCl) used as a structure label",
+      "26810704": "about AuO; 'NaCl-type' structure",
+      "24892593": "about thorium compounds; 'NaCl' structure",
+      "24934628": "about rare-earth tellurides",
+      "40343283": "about another superconductor; 'NaCl-type' structure",
+      "24437915": "about colloidal clusters with NaCl-like order, not NaCl",
+      "12924627": "biomedical paper (renal receptors); NaCl as a diet salt",
+      "479083": "analytical chemistry (aflatoxin extraction); NaCl as a reagent"
+    },
+    "Fm-3m": {
+      "38848357": "about MgO; 'NaCl' names its structure type",
+      "23180773": "about MgO; 'sodium chloride' names its structure type",
+      "22076374": "about FeO; 'NaCl-type' structure",
+      "1301.6254v1": "about AgBr; 'NaCl-type' structure",
+      "16471718": "about AgCl",
+      "34355975": "about KCl; B1(NaCl) used as a structure label",
+      "26810704": "about AuO; 'NaCl-type' structure",
+      "24892593": "about thorium compounds; 'NaCl' structure",
+      "24934628": "about rare-earth tellurides",
+      "40343283": "about another superconductor; 'NaCl-type' structure",
+      "24437915": "about colloidal clusters with NaCl-like order, not NaCl",
+      "12924627": "biomedical paper (renal receptors); NaCl as a diet salt",
+      "479083": "analytical chemistry (aflatoxin extraction); NaCl as a reagent",
+      "38215382": "duplicate of arXiv 2312.13799 (same paper)"
+    },
+    "P4/mmm": {
+      "1903.11824": "its P4/mmm phase is Na3Cl, a different compound"
+    }
+  }
+}

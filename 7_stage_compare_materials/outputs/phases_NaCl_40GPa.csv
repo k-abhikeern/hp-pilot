@@ -1,0 +1,15 @@
+name,space_group,structures,trust_labels,ml_dH_meV,dft_dH_meV,literature,n_papers
+CsCl,Pm-3m,s007 s006,Needs DFT,867.4,0.0,Known,10
+rocksalt,Fm-3m,s015 s009,Needs DFT,884.4,69.6,Known,11
+P6_3/mmc,P6_3/mmc,s010 s014,Needs DFT,942.6,103.2,Not found,0
+P6_3/mmc,P6_3/mmc,s005,Needs DFT,1004.3,174.4,Not found,0
+P4/mmm,P4/mmm,s012,Needs DFT,0.0,299.7,Not found,0
+P4/mmm,P4/mmm,s011,Needs DFT,147.5,480.5,Not found,0
+P6_3/mmc,P6_3/mmc,s019,Needs DFT,1528.3,774.1,Not found,0
+P4/mmm,P4/mmm,s013 s002,Needs DFT,1589.5,793.4,Not found,0
+P6_3/mmc,P6_3/mmc,s001,Needs DFT,1892.7,1100.5,Not found,0
+P6/mmm,P6/mmm,s018,Needs DFT,1881.3,1766.4,Not found,0
+P4/mmm,P4/mmm,s000,Needs DFT,1409.2,2116.9,Not found,0
+P-6m2,P-6m2,s003,Needs DFT,3320.0,2606.6,Not found,0
+P6/mmm,P6/mmm,s017,Needs DFT,2076.5,2769.1,Not found,0
+P4_2/mmc,P4_2/mmc,s016,Needs DFT,4465.8,3373.6,Not found,0

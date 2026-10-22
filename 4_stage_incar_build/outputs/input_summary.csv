@@ -1,21 +1,21 @@
 name,id,pressure_GPa,label,space_group,n_atoms,potcars,ENCUT,kpoint_grid,est_cost,batch,checks_passed,check_failures,ml_model,ml_enthalpy_eV_per_atom,reasons
-s019_15GPa,s019,15.0,Needs DFT,I4_1/amd,4,Si,368.0,7x7x13,10192,6,True,,mace_mp_medium,-3.782537396833586,models disagree on enthalpy by 82 meV/atom; models disagree on pressure by 3.5 GPa
-s009_15GPa,s009,15.0,Trusted,Pm-3m,4,Si,368.0,10x10x7,11200,10,True,,mace_mp_medium,-3.7706104397211875,none
-s006_15GPa,s006,15.0,Trusted,Pm-3m,4,Si,368.0,13x7x7,10192,7,True,,mace_mp_medium,-3.7705798471393237,none
-s001_15GPa,s001,15.0,Trusted,Pm-3m,8,Si,368.0,7x7x7,21952,5,True,,mace_mp_medium,-3.770573132812111,none
-s015_15GPa,s015,15.0,Needs DFT,P6/mmm,2,Si,368.0,15x15x7,6300,3,True,,mace_mp_medium,-3.7704792592969993,models disagree on enthalpy by 75 meV/atom
-s000_15GPa,s000,15.0,Needs DFT,P6/mmm,8,Si,368.0,8x8x7,28672,1,True,,mace_mp_medium,-3.7704647684786865,models disagree on enthalpy by 75 meV/atom
-s007_15GPa,s007,15.0,Trusted,Pm-3m,4,Si,368.0,10x7x10,11200,10,True,,mace_mp_medium,-3.7704318224299715,none
-s014_15GPa,s014,15.0,Trusted,Pm-3m,8,Si,368.0,7x7x7,21952,6,True,,mace_mp_medium,-3.7703116491967013,none
-s016_15GPa,s016,15.0,Trusted,Cmcm,4,Si,368.0,10x7x10,11200,9,True,,mace_mp_medium,-3.7701760269954816,none
-s004_15GPa,s004,15.0,Trusted,P4/nmm,4,Si,368.0,7x13x7,10192,10,True,,mace_mp_medium,-3.769772439139483,none
-s013_15GPa,s013,15.0,Trusted,Cmcm,4,Si,368.0,7x10x10,11200,8,True,,mace_mp_medium,-3.76685532822145,none
-s003_15GPa,s003,15.0,Needs DFT,I4/mmm,8,Si,368.0,5x5x13,20800,8,True,,mace_mp_medium,-3.7227512110438656,models disagree on enthalpy by 25 meV/atom; models disagree on pressure by 4.3 GPa; another model sees forces of 0.48 eV/A
-s012_15GPa,s012,15.0,Needs DFT,I4/mmm,4,Si,368.0,10x10x7,11200,5,True,,mace_mp_medium,-3.6842242054353704,models disagree on enthalpy by 67 meV/atom; models disagree on pressure by 9.7 GPa
-s005_15GPa,s005,15.0,Needs DFT,Fm-3m,4,Si,368.0,9x9x9,11664,9,True,,mace_mp_medium,-3.682579048109348,models disagree on enthalpy by 33 meV/atom; models disagree on pressure by 4.6 GPa
-s011_15GPa,s011,15.0,Needs DFT,Fm-3m,8,Si,368.0,9x9x5,25920,3,True,,mace_mp_medium,-3.682227968902338,models disagree on enthalpy by 34 meV/atom; models disagree on pressure by 4.5 GPa
-s017_15GPa,s017,15.0,Needs DFT,P6_3/mmc,2,Si,368.0,15x15x8,7200,4,True,,mace_mp_medium,-3.6664306467113157,models disagree on enthalpy by 73 meV/atom; models disagree on pressure by 4.1 GPa
-s008_15GPa,s008,15.0,Needs DFT,P6_3/m,8,Si,368.0,7x7x8,25088,4,True,,mace_mp_medium,-3.6655422163843685,models disagree on enthalpy by 70 meV/atom; models disagree on pressure by 6.0 GPa; another model sees forces of 0.35 eV/A
-s002_15GPa,s002,15.0,Needs DFT,P4_2/mmc,8,Si,368.0,7x7x7,21952,7,True,,mace_mp_medium,-3.6611594466739663,models disagree on enthalpy by 46 meV/atom; models disagree on pressure by 4.8 GPa; another model sees forces of 0.35 eV/A
-s018_15GPa,s018,15.0,Needs DFT,P6_322,8,Si,368.0,7x7x9,28224,2,True,,mace_mp_medium,-3.600305600524857,models disagree on enthalpy by 75 meV/atom; models disagree on pressure by 4.5 GPa
-s010_15GPa,s010,15.0,Needs DFT,Pm-3m,2,Si,368.0,12x12x16,9216,9,True,,mace_mp_medium,-2.877813803882744,models disagree on enthalpy by 38981 meV/atom; models disagree on pressure by 12392.8 GPa; volume collapsed (0.57 of typical)
+s003_30GPa,s003,30.0,Needs DFT,?,10,Ca_sv Si O,520.0,6x6x3,10800,1,True,,mace_mp_medium,-40572094.68546088,stage 2 relaxation not_converged; models disagree on enthalpy by 41681301327 meV/atom; models disagree on pressure by 2942236194.1 GPa; another model sees forces of 4966430026.45 eV/A; atoms very close (0.04 of a normal bond)
+s011_30GPa,s011,30.0,Needs DFT,Pm-3m,10,Ca_sv Si O,520.0,4x4x5,8000,3,True,,mace_mp_medium,-5.5925745116410654,models disagree on enthalpy by 170 meV/atom; models disagree on pressure by 4.2 GPa
+s006_30GPa,s006,30.0,Needs DFT,Pm-3m,5,Ca_sv Si O,520.0,5x5x5,3125,3,True,,mace_mp_medium,-5.592509803817707,models disagree on enthalpy by 170 meV/atom; models disagree on pressure by 3.7 GPa
+s005_30GPa,s005,30.0,Needs DFT,Pmmm,10,Ca_sv Si O,520.0,3x3x6,5400,10,True,,mace_mp_medium,-5.395873417270383,models disagree on enthalpy by 111 meV/atom; models disagree on pressure by 7.8 GPa; another model sees forces of 1.23 eV/A
+s016_30GPa,s016,30.0,Needs DFT,P2/m,5,Ca_sv Si O,520.0,9x5x7,7875,5,True,,mace_mp_medium,-5.393803862434523,models disagree on enthalpy by 112 meV/atom; models disagree on pressure by 7.9 GPa; another model sees forces of 1.12 eV/A
+s007_30GPa,s007,30.0,Needs DFT,P1,10,Ca_sv Si O,520.0,3x3x6,5400,10,True,,mace_mp_medium,-5.305844927885849,stage 2 relaxation not_converged; models disagree on enthalpy by 90 meV/atom; models disagree on pressure by 8.9 GPa; another model sees forces of 0.76 eV/A
+s012_30GPa,s012,30.0,Needs DFT,C2,5,Ca_sv Si O,520.0,4x4x6,2400,1,True,,mace_mp_medium,-4.998234372220038,models disagree on enthalpy by 94 meV/atom; models disagree on pressure by 9.0 GPa; another model sees forces of 0.49 eV/A
+s015_30GPa,s015,30.0,Needs DFT,Imm2,10,Ca_sv Si O,520.0,6x3x3,5400,9,True,,mace_mp_medium,-4.912493382850746,models disagree on enthalpy by 100 meV/atom; models disagree on pressure by 8.3 GPa; another model sees forces of 0.32 eV/A
+s009_30GPa,s009,30.0,Needs DFT,Imm2,10,Ca_sv Si O,520.0,3x6x3,5400,6,True,,mace_mp_medium,-4.9124348790583126,models disagree on enthalpy by 102 meV/atom; models disagree on pressure by 7.7 GPa; another model sees forces of 0.32 eV/A
+s004_30GPa,s004,30.0,Needs DFT,P6_3/mmc,10,Ca_sv Si O,520.0,5x5x4,10000,2,True,,mace_mp_medium,-4.216125042781255,models disagree on enthalpy by 103 meV/atom; models disagree on pressure by 42.5 GPa; atoms very close (0.66 of a normal bond)
+s008_30GPa,s008,30.0,Needs DFT,P4/mbm,10,Ca_sv Si O,520.0,4x4x3,4800,5,True,,mace_mp_medium,-4.05826126800919,models disagree on enthalpy by 273 meV/atom; models disagree on pressure by 7.7 GPa; another model sees forces of 0.56 eV/A
+s002_30GPa,s002,30.0,Needs DFT,Cc,10,Ca_sv Si O,520.0,5x5x2,5000,7,True,,mace_mp_medium,-4.013712714034645,models disagree on enthalpy by 269 meV/atom; models disagree on pressure by 20.6 GPa; another model sees forces of 4.05 eV/A
+s014_30GPa,s014,30.0,Needs DFT,P4_2,10,Ca_sv Si O,520.0,4x4x4,6400,9,True,,mace_mp_medium,-3.720422056547868,models disagree on enthalpy by 136 meV/atom; models disagree on pressure by 5.0 GPa; another model sees forces of 0.67 eV/A; atoms very close (0.74 of a normal bond)
+s001_30GPa,s001,30.0,Needs DFT,I-4m2,10,Ca_sv Si O,520.0,5x5x3,7500,6,True,,mace_mp_medium,-3.528103296646563,models disagree on enthalpy by 69 meV/atom; models disagree on pressure by 17.7 GPa; another model sees forces of 2.35 eV/A
+s018_30GPa,s018,30.0,Needs DFT,I-4m2,10,Ca_sv Si O,520.0,5x5x3,7500,7,True,,mace_mp_medium,-2.9964906305425236,models disagree on enthalpy by 307 meV/atom; models disagree on pressure by 8.9 GPa; another model sees forces of 2.01 eV/A
+s019_30GPa,s019,30.0,Needs DFT,P-4m2,10,Ca_sv Si O,520.0,5x5x2,5000,8,True,,mace_mp_medium,-2.6592410007526257,models disagree on enthalpy by 139 meV/atom; models disagree on pressure by 11.2 GPa; another model sees forces of 1.39 eV/A
+s000_30GPa,s000,30.0,Needs DFT,P6_3/mmc,10,Ca_sv Si O,520.0,5x5x3,7500,8,True,,mace_mp_medium,-2.341687431488234,models disagree on enthalpy by 247 meV/atom; models disagree on pressure by 5.1 GPa; another model sees forces of 0.37 eV/A
+s017_30GPa,s017,30.0,Needs DFT,P4/mmm,10,Ca_sv Si O,520.0,4x4x5,8000,4,True,,mace_mp_medium,-2.06323823292818,models disagree on enthalpy by 389 meV/atom; models disagree on pressure by 34.5 GPa
+s013_30GPa,s013,30.0,Needs DFT,Pm-3m,5,Ca_sv Si O,520.0,5x5x5,3125,4,True,,mace_mp_medium,-1.9741063755672503,models disagree on enthalpy by 239 meV/atom; models disagree on pressure by 34.4 GPa; atoms very close (0.79 of a normal bond)
+s010_30GPa,s010,30.0,Needs DFT,P6/mmm,5,Ca_sv Si O,520.0,5x5x4,2500,2,True,,mace_mp_medium,-0.8559049439079839,models disagree on enthalpy by 530 meV/atom; models disagree on pressure by 15.0 GPa

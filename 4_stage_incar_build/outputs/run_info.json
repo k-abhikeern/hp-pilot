@@ -79,7 +79,7 @@
       "make_plots": true
     }
   },
-  "profile": "standard",
+  "profile": "quick",
   "input": "/home/abhikeern/project/7_OSI/3_stage_trust_check/outputs/needs_dft.extxyz",
   "n_calcs": 20,
   "n_ready": 20,
@@ -93,5 +93,5 @@
     "total_cores": 704,
     "pending_jobs": 61
   },
-  "log_file": "/home/abhikeern/project/7_OSI/4_stage_incar_build/logs/stage4_20261022_184744.log"
+  "log_file": "/home/abhikeern/project/7_OSI/4_stage_incar_build/logs/stage4_20261022_190725.log"
 }

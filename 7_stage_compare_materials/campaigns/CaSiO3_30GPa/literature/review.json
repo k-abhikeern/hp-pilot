@@ -1,0 +1,8 @@
+{
+  "reviewed_by": "Claude (agent), 2026-10-22, after reading every evidence sentence; check before relying on it",
+  "exclude": {
+    "Pm-3m": {
+      "38272879": "about CaC2O5; cubic Ca-perovskite is only a comparison"
+    }
+  }
+}

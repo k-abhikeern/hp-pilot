@@ -1,0 +1,13 @@
+name,space_group,structures,trust_labels,ml_dH_meV,dft_dH_meV,literature,n_papers
+cubic perovskite,Pm-3m,s006,Needs DFT,0.0,0.0,Known,12
+Cmmm,Cmmm,s007,Needs DFT,286.7,155.5,not checked,0
+Pmmm,Pmmm,s016 s005,Needs DFT,196.6,263.4,Not found,0
+C2,C2,s012,Needs DFT,594.3,646.3,Not found,0
+Imm2,Imm2,s009 s015,Needs DFT,680.0,723.1,Not found,0
+P4/mbm,P4/mbm,s008,Needs DFT,1534.2,1526.4,not checked,0
+P4_2,P4_2,s014,Needs DFT,1872.1,1899.7,Not found,0
+I-4m2,I-4m2,s001,Needs DFT,2064.4,2133.2,Not found,0
+P6_3/mmc,P6_3/mmc,s000,Needs DFT,3250.8,3299.5,Not found,0
+Pm-3m,Pm-3m,s013,Needs DFT,3618.4,3456.3,not checked,0
+P4/mmm,P4/mmm,s017,Needs DFT,3529.3,3627.1,Not found,0
+P6/mmm,P6/mmm,s010,Needs DFT,4736.6,4681.2,Not found,0

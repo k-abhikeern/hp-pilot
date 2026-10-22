@@ -1,0 +1,281 @@
+{
+  "composition": "CaSiO3",
+  "material_name": "CaSiO3",
+  "pressure_gpa": 30.0,
+  "general_query": "CaSiO3 high pressure phase transitions crystal structure",
+  "phases": [
+    {
+      "space_group": "unknown",
+      "name": "unknown",
+      "search_terms": [
+        "unknown",
+        "unknown"
+      ],
+      "query": "CaSiO3 unknown phase high pressure",
+      "structures": [
+        "s003"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": -40572089092.9,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "Pm-3m",
+      "name": "cubic perovskite",
+      "search_terms": [
+        "cubic perovskite",
+        "cubic",
+        "Pm-3m",
+        "Pm-3m"
+      ],
+      "query": "CaSiO3 cubic perovskite phase high pressure",
+      "structures": [
+        "s011",
+        "s006",
+        "s013"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 0.0,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "Pmmm",
+      "name": "Pmmm",
+      "search_terms": [
+        "Pmmm",
+        "Pmmm"
+      ],
+      "query": "CaSiO3 Pmmm phase high pressure",
+      "structures": [
+        "s005"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 196.7,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P2/m",
+      "name": "P2/m",
+      "search_terms": [
+        "P2/m",
+        "P2/m"
+      ],
+      "query": "CaSiO3 P2/m phase high pressure",
+      "structures": [
+        "s016"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 198.8,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P1",
+      "name": "P1",
+      "search_terms": [
+        "P1",
+        "P1"
+      ],
+      "query": "CaSiO3 P1 phase high pressure",
+      "structures": [
+        "s007"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 286.7,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "C2",
+      "name": "C2",
+      "search_terms": [
+        "C2",
+        "C2"
+      ],
+      "query": "CaSiO3 C2 phase high pressure",
+      "structures": [
+        "s012"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 594.3,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "Imm2",
+      "name": "Imm2",
+      "search_terms": [
+        "Imm2",
+        "Imm2"
+      ],
+      "query": "CaSiO3 Imm2 phase high pressure",
+      "structures": [
+        "s015",
+        "s009"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 680.1,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P6_3/mmc",
+      "name": "P6_3/mmc",
+      "search_terms": [
+        "P6_3/mmc",
+        "P63/mmc"
+      ],
+      "query": "CaSiO3 P6_3/mmc phase high pressure",
+      "structures": [
+        "s004",
+        "s000"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 1376.4,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P4/mbm",
+      "name": "tetragonal perovskite",
+      "search_terms": [
+        "tetragonal perovskite",
+        "tetragonal",
+        "P4/mbm",
+        "P4/mbm"
+      ],
+      "query": "CaSiO3 tetragonal perovskite phase high pressure",
+      "structures": [
+        "s008"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 1534.3,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "Cc",
+      "name": "Cc",
+      "search_terms": [
+        "Cc",
+        "Cc"
+      ],
+      "query": "CaSiO3 Cc phase high pressure",
+      "structures": [
+        "s002"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 1578.9,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P4_2",
+      "name": "P4_2",
+      "search_terms": [
+        "P4_2",
+        "P42"
+      ],
+      "query": "CaSiO3 P4_2 phase high pressure",
+      "structures": [
+        "s014"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 1872.2,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "I-4m2",
+      "name": "I-4m2",
+      "search_terms": [
+        "I-4m2",
+        "I-4m2"
+      ],
+      "query": "CaSiO3 I-4m2 phase high pressure",
+      "structures": [
+        "s001",
+        "s018"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 2064.5,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P-4m2",
+      "name": "P-4m2",
+      "search_terms": [
+        "P-4m2",
+        "P-4m2"
+      ],
+      "query": "CaSiO3 P-4m2 phase high pressure",
+      "structures": [
+        "s019"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 2933.3,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P4/mmm",
+      "name": "P4/mmm",
+      "search_terms": [
+        "P4/mmm",
+        "P4/mmm"
+      ],
+      "query": "CaSiO3 P4/mmm phase high pressure",
+      "structures": [
+        "s017"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 3529.3,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P6/mmm",
+      "name": "P6/mmm",
+      "search_terms": [
+        "P6/mmm",
+        "P6/mmm"
+      ],
+      "query": "CaSiO3 P6/mmm phase high pressure",
+      "structures": [
+        "s010"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 4736.7,
+      "dft_dH_meV": null
+    }
+  ],
+  "aliases": [
+    "CaSiO_{3}",
+    "CaSiO$_3$",
+    "CaSiO$_{3}$",
+    "calcium silicate",
+    "Ca-perovskite",
+    "calcium silicate perovskite",
+    "davemaoite"
+  ]
+}

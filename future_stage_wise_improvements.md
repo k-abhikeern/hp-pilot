@@ -144,6 +144,20 @@ Each item says where the change would go, so it can be added without touching ot
 
 ---
 
+## Stage 7: compare materials
+
+| Priority | Improvement | Where |
+|---|---|---|
+| Soon | Calibrate trust limits per chemistry: with the Si-tuned limits, every NaCl and CaSiO₃ structure was flagged | `[stage3]` limits, using the 52 DFT results |
+| Soon | Rerun the 6 CaSiO₃ (and 2 NaCl) calculations that hit the quick profile's 60-step limit | stage 4 `--ids`, `NSW` |
+| Soon | Standard DFT for NaCl and CaSiO₃, as done for Si | `--profile standard`, archive with `--dft-name dft_standard` |
+| Soon | One command for a whole campaign (run, archive, DFT, archive DFT) | `hp-pilot campaign ...` |
+| Soon | Perovskite check generalised to other structure families (coordination via pymatgen CrystalNN) | `is_perovskite()` in `run_stage7.py` |
+| Later | Transition pressures: run each material at several pressures and plot enthalpy vs pressure (e.g. NaCl B1 to B2 near 27-30 GPa) | new stage 7 figure |
+| Later | Compare predicted XRD with measured patterns from the papers found in stage 6 | stage 6 + 7 |
+
+---
+
 ## Hackathon materials
 
 | Priority | Improvement | Where |

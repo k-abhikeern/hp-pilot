@@ -1,0 +1,9 @@
+space_group,name,structures,trust_labels,best_ml_dH_meV,dft_dH_meV,status,n_papers,reported_pressures_GPa,top_paper_urls
+Pmma,Pmma,s012,Needs DFT,0.0,,Not found,0,,
+P4/mmm,P4/mmm,s011 s000 s013 s002,Needs DFT,147.5,,Not found,0,,
+Pm-3m,CsCl,s007 s006 s008 s004,Needs DFT,867.4,,Known,10,41.0 60.0 66.0 140.0,https://pubmed.ncbi.nlm.nih.gov/17483460/ https://pubmed.ncbi.nlm.nih.gov/17800712/ https://pubmed.ncbi.nlm.nih.gov/34533357/
+Fm-3m,rocksalt,s015 s009,Needs DFT,884.4,,Known,11,20.0 41.0 60.0 66.0 140.0,https://arxiv.org/abs/1211.3644 https://pubmed.ncbi.nlm.nih.gov/17800712/ https://pubmed.ncbi.nlm.nih.gov/34533357/
+P6_3/mmc,P6_3/mmc,s010 s014 s005 s019 s001,Needs DFT,942.6,,Not found,0,,
+P6/mmm,P6/mmm,s018 s017,Needs DFT,1881.3,,Not found,0,,
+P-6m2,P-6m2,s003,Needs DFT,3320.0,,Not found,0,,
+P4_2/mmc,P4_2/mmc,s016,Needs DFT,4465.8,,Not found,0,,

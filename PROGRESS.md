@@ -15,6 +15,7 @@
 | 4 | `4_stage_incar_build` | Build VASP input files for the Needs DFT structures, check them, plan SLURM jobs | DONE |
 | 5 | `5_stage_vasp_run` | Submit VASP jobs, check them, compare DFT with ML | DONE (first test run) |
 | 6 | `6_stage_literature_check` | Check predicted phases against the literature (Valency), agent-reviewed | DONE |
+| 7 | `7_stage_compare_materials` | Keep each material's results; combine Si, NaCl, CaSiO₃ into figures and a scorecard | DONE |
 
 ## How the project is organised
 
@@ -249,6 +250,45 @@ All values in meV/atom above the best structure.
 - Mean change from quick to standard: 25 meV/atom, largest 67. Rank agreement (Spearman) 0.91. Quick settings are fine for screening, not for fine ranking.
 - **Still true:** simple hexagonal is lowest; the 8 Trusted structures are still 75 to 130 meV/atom worse than ML said. The shared blind spot of the all-MACE committee is confirmed with tight settings.
 - **Changed:** beta-tin moved from 12 to 3.5 meV/atom above simple hexagonal. At 15 GPa they are practically degenerate within DFT accuracy, so "which is lowest" is not something this level of theory can settle. That fits the literature, where Si goes beta-tin → Imma → simple hexagonal around 13 to 16 GPa.
+
+---
+
+## Stage 7: compare materials (DONE)
+
+**What was done**
+- New folder `7_stage_compare_materials/`:
+  - `archive_campaign.py` saves each material's results (ML ranking, trust report, literature, DFT results with final structures) in `campaigns/<label>/`, so the next material can't overwrite them.
+  - `run_stage7.py` combines all materials into a figure, a scorecard and tables. It uses pymatgen StructureMatcher (same-phase grouping), SpacegroupAnalyzer (symmetry, standard cell) and XRDCalculator (simulated XRD), and ASE to draw the crystals.
+- Ran two new test materials with known answers, quick DFT on all 20 structures each:
+  - **NaCl at 40 GPa** (binary), cells of 2 to 8 atoms;
+  - **CaSiO₃ at 30 GPa** (ternary), cells of 5 or 10 atoms.
+- Stage 6 literature check for both (agent ran 3 Valency searches: 75 and 85 papers), with review.
+- Added `--formula-units` to `hp-pilot`, `--campaign` to stage 6, and formula tracking in stage 4/5 results.
+
+**Problems found and fixed**
+- **ENCUT rounded down** (341 instead of 341.2 eV for Cl): the stage 4 input check caught it, and ENCUT now always rounds up.
+- **Structure ids repeat across materials**, so stage 6 could have attached Si DFT numbers to CaSiO₃. DFT results now carry their formula.
+- **Literature false matches for compounds:**
+  - "NaCl-type" is a structure name used for MgO, FeO, AgBr and others;
+  - generic "perovskite" counted every paper for every perovskite phase.
+
+  The matching rules were tightened and the agent excluded 15 more papers with reasons.
+- **Grouping:** StructureMatcher joined two NaCl structures 300 meV/atom apart; phases now also need DFT enthalpies within 5 meV/atom.
+- **A false "tetragonal perovskite":** a P4/mbm structure 1.5 eV/atom up was named perovskite by symmetry. Stage 7 now checks for SiO₆ octahedra.
+
+**Results (quick DFT)**
+
+| | Si 15 GPa | NaCl 40 GPa | CaSiO₃ 30 GPa |
+|---|---|---|---|
+| DFT winner | simple hexagonal | CsCl-type (B2) | cubic perovskite |
+| In literature | yes (4 papers) | yes (10) | yes (12) |
+| ML winner | beta-tin (+12 meV/atom in DFT) | P4/mmm (+300) | cubic perovskite (correct) |
+| Median / max ML error (meV/atom) | 76 / 693 | 796 / 1092 | 54 / 162 |
+| Trust check | 8 Trusted, all wrong | all flagged (right: ML badly off) | all flagged (cautious) |
+
+**What it means:** in all three materials the pipeline's DFT step lands on the phase the literature reports. The ML model alone gets one right (CaSiO₃), one nearly (Si) and one badly wrong (NaCl, off by more than 1 eV/atom). The trust check never let the NaCl error through, but its Trusted label failed on Si, and its limits flag everything for multi-element compounds, so they need calibrating per chemistry.
+
+**Files:** see `7_stage_compare_materials/README.md`.
 
 ---
 

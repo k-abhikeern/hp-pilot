@@ -33,7 +33,8 @@ def write_run_config(args):
     """Copy config.toml, replacing only the values given on the command line."""
     text = (ROOT / "config.toml").read_text()
     changes = {"composition": f'"{args.composition}"' if args.composition else None,
-               "pressure_gpa": args.pressure, "n_structures": args.n_structures, "seed": args.seed}
+               "pressure_gpa": args.pressure, "n_structures": args.n_structures, "seed": args.seed,
+               "formula_units": f"[{', '.join(map(str, args.formula_units))}]" if args.formula_units else None}
     for key, value in changes.items():
         if value is not None:
             text, n = re.subn(rf"(?m)^({key}\s*=\s*)[^#\n]*?(\s*(#.*)?)$", rf"\g<1>{value}\g<2>", text, count=1)
@@ -61,6 +62,7 @@ def main():
     run.add_argument("--pressure", type=float, help="target pressure in GPa")
     run.add_argument("--n-structures", type=int, help="number of random candidates")
     run.add_argument("--seed", type=int, help="random seed")
+    run.add_argument("--formula-units", type=int, nargs="+", help="cell sizes to try, e.g. 1 2 4")
     run.add_argument("--submit", action="store_true", help="also submit the VASP jobs (stage 5)")
     run.add_argument("--dry-run", action="store_true", help="with --submit: show jobs without sending them")
     sub.add_parser("status", help="state of the newest VASP run")

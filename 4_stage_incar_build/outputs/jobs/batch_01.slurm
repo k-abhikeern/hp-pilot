@@ -5,7 +5,7 @@
 #SBATCH --job-name=hp_b01
 #SBATCH --partition=defq
 #SBATCH --nodes=1
-#SBATCH --ntasks=8
+#SBATCH --ntasks=16
 #SBATCH --cpus-per-task=1
 #SBATCH --threads-per-core=1
 #SBATCH --output=hp_b01.out
@@ -20,7 +20,7 @@ ulimit -s unlimited
 
 # Run each calculation in this batch one after another, and record how each one ended.
 # Paths are relative to the folder the job is submitted from, so the whole run folder can be moved.
-for calc in ../calcs/s000_15GPa; do
+for calc in ../calcs/s003_30GPa ../calcs/s012_30GPa; do
     cd "$SLURM_SUBMIT_DIR/$calc" || continue
     echo "start $(date +%T)" > status.txt
     srun --mpi=pmi2 --ntasks=$SLURM_NTASKS --cpus-per-task=1 --threads-per-core=1 vasp_std > vasp.out 2>&1

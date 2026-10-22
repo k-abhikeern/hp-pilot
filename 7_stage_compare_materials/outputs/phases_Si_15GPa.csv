@@ -1,0 +1,16 @@
+name,space_group,structures,trust_labels,ml_dH_meV,dft_dH_meV,literature,n_papers
+simple hexagonal,P6/mmm,s015 s000,Needs DFT,12.1,0.0,Known,4
+beta-tin,I4_1/amd,s019,Needs DFT,0.0,12.2,Known,12
+Cmcm,Cmcm,s016 s013,Trusted,12.4,118.0,Not found,0
+body-centered tetragonal,I4/mmm,s012,Needs DFT,98.3,124.6,Not found,0
+body-centered tetragonal,I4/mmm,s003,Needs DFT,59.8,126.1,Not found,0
+hexagonal close-packed,P6_3/mmc,s008 s017,Needs DFT,116.1,130.7,Known,1
+Cmmm,Cmmm,s007,Trusted,12.1,153.8,not checked,0
+simple cubic,Pm-3m,s009,Trusted,11.9,165.0,Known,1
+face-centered cubic,Fm-3m,s005,Needs DFT,100.0,169.0,Known,2
+simple cubic,Pm-3m,s006 s004,Trusted,12.0,171.3,Known,1
+face-centered cubic,Fm-3m,s011,Needs DFT,100.3,182.7,Known,2
+P4_2/mmc,P4_2/mmc,s002,Needs DFT,121.4,186.0,Not found,0
+simple cubic,Pm-3m,s001 s014,Trusted,12.0,205.2,Known,1
+simple cubic,Pm-3m,s010,Needs DFT,904.7,212.0,Known,1
+P6_322,P6_322,s018,Needs DFT,182.2,238.4,Not found,0

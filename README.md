@@ -50,6 +50,7 @@ All settings are in **`config.toml`**. Each stage folder has a README with an "I
 | `4_stage_incar_build` | VASP inputs for flagged structures, input checks, cluster-aware job plan, XRD plot |
 | `5_stage_vasp_run` | submit to SLURM, check jobs, compare DFT with ML |
 | `6_stage_literature_check` | check predicted phases against the literature via Valency (agent-run, reviewed) |
+| `7_stage_compare_materials` | archive each material; combined figures and scorecard (pymatgen XRD, structure matching) |
 
 Progress and decisions are in `PROGRESS.md`. Planned improvements for every stage are in `future_stage_wise_improvements.md`.
 

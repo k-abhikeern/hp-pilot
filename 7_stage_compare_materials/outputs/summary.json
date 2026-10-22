@@ -1,0 +1,50 @@
+[
+  {
+    "material": "Si at 15 GPa",
+    "score": {
+      "n": 20,
+      "n_trusted": 8,
+      "n_flagged": 12,
+      "trusted_ok": 0,
+      "flagged_wrong": 6,
+      "median_error": 75.74444167225701,
+      "max_error": 692.6893229508418
+    },
+    "dft_winner": "simple hexagonal",
+    "dft_winner_sg": "P6/mmm",
+    "ml_winner": "beta-tin",
+    "literature": "Known"
+  },
+  {
+    "material": "NaCl at 40 GPa",
+    "score": {
+      "n": 18,
+      "n_trusted": 0,
+      "n_flagged": 18,
+      "trusted_ok": 0,
+      "flagged_wrong": 18,
+      "median_error": 796.039663020161,
+      "max_error": 1092.2020050630208
+    },
+    "dft_winner": "CsCl",
+    "dft_winner_sg": "Pm-3m",
+    "ml_winner": "P4/mmm",
+    "literature": "Known"
+  },
+  {
+    "material": "CaSiO3 at 30 GPa",
+    "score": {
+      "n": 14,
+      "n_trusted": 0,
+      "n_flagged": 14,
+      "trusted_ok": 0,
+      "flagged_wrong": 8,
+      "median_error": 53.72624415602775,
+      "max_error": 162.095774250457
+    },
+    "dft_winner": "cubic perovskite",
+    "dft_winner_sg": "Pm-3m",
+    "ml_winner": "cubic perovskite",
+    "literature": "Known"
+  }
+]

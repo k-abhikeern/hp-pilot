@@ -114,6 +114,7 @@ def read_calc(calc_dir):
 
     meta = json.loads((calc_dir / "meta.json").read_text())
     row = {k: meta[k] for k in ("name", "id", "pressure_GPa", "label", "space_group", "ml_enthalpy_eV_per_atom")}
+    row["formula"] = meta.get("formula", "")
     row["ml_space_group"] = row.pop("space_group")
     if not (calc_dir / "vasprun.xml").exists():
         return {**row, "dft_status": "no vasprun.xml"}

@@ -8,119 +8,119 @@
     "total_cores": 704,
     "pending_jobs": 61
   },
-  "cores_per_job": 8,
+  "cores_per_job": 16,
   "jobs": [
     {
       "batch": 1,
       "job_name": "hp_b01",
       "script": "batch_01.slurm",
-      "cores": 8,
+      "cores": 16,
       "calcs": [
-        "s000_15GPa"
+        "s003_30GPa",
+        "s012_30GPa"
       ],
-      "est_cost": 28672
+      "est_cost": 13200
     },
     {
       "batch": 2,
       "job_name": "hp_b02",
       "script": "batch_02.slurm",
-      "cores": 8,
+      "cores": 16,
       "calcs": [
-        "s018_15GPa"
+        "s004_30GPa",
+        "s010_30GPa"
       ],
-      "est_cost": 28224
+      "est_cost": 12500
     },
     {
       "batch": 3,
       "job_name": "hp_b03",
       "script": "batch_03.slurm",
-      "cores": 8,
+      "cores": 16,
       "calcs": [
-        "s011_15GPa",
-        "s015_15GPa"
+        "s011_30GPa",
+        "s006_30GPa"
       ],
-      "est_cost": 32220
+      "est_cost": 11125
     },
     {
       "batch": 4,
       "job_name": "hp_b04",
       "script": "batch_04.slurm",
-      "cores": 8,
+      "cores": 16,
       "calcs": [
-        "s008_15GPa",
-        "s017_15GPa"
+        "s017_30GPa",
+        "s013_30GPa"
       ],
-      "est_cost": 32288
+      "est_cost": 11125
     },
     {
       "batch": 5,
       "job_name": "hp_b05",
       "script": "batch_05.slurm",
-      "cores": 8,
+      "cores": 16,
       "calcs": [
-        "s001_15GPa",
-        "s012_15GPa"
+        "s016_30GPa",
+        "s008_30GPa"
       ],
-      "est_cost": 33152
+      "est_cost": 12675
     },
     {
       "batch": 6,
       "job_name": "hp_b06",
       "script": "batch_06.slurm",
-      "cores": 8,
+      "cores": 16,
       "calcs": [
-        "s014_15GPa",
-        "s019_15GPa"
+        "s001_30GPa",
+        "s009_30GPa"
       ],
-      "est_cost": 32144
+      "est_cost": 12900
     },
     {
       "batch": 7,
       "job_name": "hp_b07",
       "script": "batch_07.slurm",
-      "cores": 8,
+      "cores": 16,
       "calcs": [
-        "s002_15GPa",
-        "s006_15GPa"
+        "s018_30GPa",
+        "s002_30GPa"
       ],
-      "est_cost": 32144
+      "est_cost": 12500
     },
     {
       "batch": 8,
       "job_name": "hp_b08",
       "script": "batch_08.slurm",
-      "cores": 8,
+      "cores": 16,
       "calcs": [
-        "s003_15GPa",
-        "s013_15GPa"
+        "s000_30GPa",
+        "s019_30GPa"
       ],
-      "est_cost": 32000
+      "est_cost": 12500
     },
     {
       "batch": 9,
       "job_name": "hp_b09",
       "script": "batch_09.slurm",
-      "cores": 8,
+      "cores": 16,
       "calcs": [
-        "s005_15GPa",
-        "s016_15GPa",
-        "s010_15GPa"
+        "s014_30GPa",
+        "s015_30GPa"
       ],
-      "est_cost": 32080
+      "est_cost": 11800
     },
     {
       "batch": 10,
       "job_name": "hp_b10",
       "script": "batch_10.slurm",
-      "cores": 8,
+      "cores": 16,
       "calcs": [
-        "s009_15GPa",
-        "s007_15GPa",
-        "s004_15GPa"
+        "s005_30GPa",
+        "s007_30GPa"
       ],
-      "est_cost": 32592
+      "est_cost": 10800
     }
   ],
   "time_limit": "01:00:00",
-  "profile": "standard"
+  "profile": "quick"
 }

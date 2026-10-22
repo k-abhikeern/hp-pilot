@@ -1,9 +1,9 @@
 data_image0
-_chemical_formula_structural       Si4
-_chemical_formula_sum              "Si4"
-_cell_length_a       6.657173215400347
-_cell_length_b       4.131309168399643
-_cell_length_c       5.526098899401523
+_chemical_formula_structural       O3SiCa
+_chemical_formula_sum              "O3 Si1 Ca1"
+_cell_length_a       4.549689657078575
+_cell_length_b       4.549689657078575
+_cell_length_c       4.549689657078575
 _cell_angle_alpha    90.0
 _cell_angle_beta     90.0
 _cell_angle_gamma    90.0
@@ -23,7 +23,8 @@ loop_
   _atom_site_fract_y
   _atom_site_fract_z
   _atom_site_occupancy
-  Si  Si1       1.0  0.6971133174441064  0.3127418931500765  0.14217371304247495  1.0000
-  Si  Si2       1.0  0.8028866825558933  0.6872581068499234  0.642173713042475  1.0000
-  Si  Si3       1.0  0.30288668255589357  0.8127418931500766  0.35782628695752505  1.0000
-  Si  Si4       1.0  0.19711331744410643  0.1872581068499235  0.857826286957525  1.0000
+  O   O1        1.0  0.5  1.0502299032314785e-33  0.5  1.0000
+  O   O2        1.0  0.0  0.5  0.5  1.0000
+  O   O3        1.0  0.5  0.5  0.0  1.0000
+  Si  Si1       1.0  0.0  0.0  0.0  1.0000
+  Ca  Ca1       1.0  0.5  0.5  0.5  1.0000

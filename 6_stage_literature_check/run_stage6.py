@@ -61,25 +61,45 @@ BINARY_STRUCTURE_NAMES = {
     "F-43m": ["zinc blende", "zincblende", "B3"],
     "P6_3/mc": ["wurtzite", "B4"],
 }
+# Ternary names assume an ABX3 compound (perovskite family). Extend for other ternaries.
+# Each phase is matched by its own distinguishing word (the sentence must also name the material),
+# not by the generic word "perovskite", which would count every paper for every perovskite phase.
+TERNARY_STRUCTURE_NAMES = {
+    "Pm-3m": ["cubic perovskite", "cubic"],
+    "Pnma": ["orthorhombic perovskite", "orthorhombic", "Pbnm"],
+    "I4/mcm": ["tetragonal perovskite", "tetragonal"],
+    "P4/mbm": ["tetragonal perovskite", "tetragonal"],
+    "Cmcm": ["post-perovskite"],
+    "P-1": ["wollastonite", "triclinic"],
+    "R-3c": ["rhombohedral perovskite", "rhombohedral"],
+}
 GPA_PATTERN = re.compile(r"(\d+(?:\.\d+)?)\s*(?:(?:-|–|to)\s*(\d+(?:\.\d+)?)\s*)?GPa")
 
 
 def phase_names(space_group, n_elements):
-    names = (ELEMENT_STRUCTURE_NAMES if n_elements == 1 else BINARY_STRUCTURE_NAMES).get(space_group, [])
+    table = {1: ELEMENT_STRUCTURE_NAMES, 2: BINARY_STRUCTURE_NAMES}.get(n_elements, TERNARY_STRUCTURE_NAMES)
+    names = table.get(space_group, [])
     # The space-group symbol is always a search term too, in the two ways papers write it.
     return names + [space_group, space_group.replace("_", "")]
 
 
 # ---------- prepare ----------
 
-def prepare(cfg, out_dir, log):
+def prepare(cfg, out_dir, log, sources):
     composition = Composition(cfg["project"]["composition"]).reduced_composition
     elements = [el.long_name.lower() for el in composition.elements]
     material = elements[0] if len(elements) == 1 else composition.reduced_formula
 
-    sg_of = {r["id"]: r["space_group_after"].split(" (")[0] for r in csv.DictReader(open(STAGE2))}
-    trust = list(csv.DictReader(open(STAGE3)))
-    dft = {r["id"]: r for r in csv.DictReader(open(STAGE5))} if STAGE5.exists() else {}
+    sg_of = {r["id"]: r["space_group_after"].split(" (")[0] for r in csv.DictReader(open(sources["stage2"]))}
+    trust = list(csv.DictReader(open(sources["stage3"])))
+    dft = {}
+    if sources["dft"].exists():
+        rows = list(csv.DictReader(open(sources["dft"])))
+        # Structure ids repeat across materials, so only use DFT rows of this material. In campaign
+        # folders every row belongs to the campaign; elsewhere the row's formula must match.
+        dft = {r["id"]: r for r in rows if sources["campaign"] or r.get("formula") == composition.reduced_formula}
+        if rows and not dft:
+            log.warning("DFT results in %s are for another material; not used", sources["dft"])
 
     phases = defaultdict(lambda: {"structures": [], "labels": [], "ml_dH_meV": []})
     for r in trust:
@@ -127,10 +147,18 @@ def sentences(text):
     return re.split(r"(?<=[.;])\s+", text)
 
 
+def names_material(text, material_terms):
+    """True if the text names the material itself, not just a structure type named after it
+    ("NaCl-type", "NaCl structure", "(NaCl)-type" are structure names, not NaCl)."""
+    for t in material_terms:
+        text = re.sub(re.escape(t) + r"\)?\s*[-\u2013]?\s*(type|like|structure)\b", " ", text, flags=re.IGNORECASE)
+    return mentions(text, material_terms)
+
+
 def evidence(paper, material_terms, phase_terms):
     """Sentences (title included) that name both the material and the phase."""
     return [s for s in [paper["title"]] + sentences(paper["abstract"])
-            if mentions(s, material_terms) and mentions(s, phase_terms)]
+            if names_material(s, material_terms) and mentions(s, phase_terms)]
 
 
 def pressures_in(sentence_list):
@@ -146,8 +174,8 @@ def classify(data, papers, review):
     review.json can, per phase, exclude false matches or include papers the sentence rule missed;
     every review decision carries a reason and is shown in the report."""
     material = data["material_name"]
-    material_terms = [material, data["composition"]]
-    about_material = [p for p in papers if mentions(p["title"] + " " + p["abstract"], material_terms)]
+    material_terms = [material, data["composition"]] + data.get("aliases", [])  # e.g. "sodium chloride"
+    about_material = [p for p in papers if names_material(p["title"] + " " + p["abstract"], material_terms)]
     by_id = {p["id"]: p for p in papers}
     rows = []
     for ph in data["phases"]:
@@ -308,11 +336,26 @@ def main():
     parser = argparse.ArgumentParser(description="Stage 6: literature check of predicted phases.")
     parser.add_argument("command", choices=["prepare", "report"])
     parser.add_argument("--config", help="settings file (default: ../config.toml)")
+    parser.add_argument("--campaign", help="work on an archived material folder from stage 7 "
+                                           "(e.g. ../7_stage_compare_materials/campaigns/NaCl_40GPa)")
     args = parser.parse_args()
-    cfg = load_config(args.config)
-    out_dir, log_dir = stage_dirs(STAGE_DIR)
+    _, log_dir = stage_dirs(STAGE_DIR)
     log, _ = get_logger(f"stage6_{args.command}", log_dir)
-    (prepare if args.command == "prepare" else report)(cfg, out_dir, log)
+    if args.campaign:
+        camp = Path(args.campaign).resolve()
+        cfg = load_config(camp / "last_run_config.toml")
+        out_dir = camp / "literature"
+        out_dir.mkdir(exist_ok=True)
+        sources = {"stage2": camp / "results.csv", "stage3": camp / "trust_report.csv",
+                   "dft": camp / "dft" / "dft_results.csv", "campaign": True}
+    else:
+        cfg = load_config(args.config)
+        out_dir = STAGE_DIR / "outputs"
+        sources = {"stage2": STAGE2, "stage3": STAGE3, "dft": STAGE5, "campaign": False}
+    if args.command == "prepare":
+        prepare(cfg, out_dir, log, sources)
+    else:
+        report(cfg, out_dir, log)
 
 
 if __name__ == "__main__":

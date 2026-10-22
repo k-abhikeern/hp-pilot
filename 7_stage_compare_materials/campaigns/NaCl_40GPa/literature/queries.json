@@ -1,0 +1,164 @@
+{
+  "composition": "NaCl",
+  "material_name": "NaCl",
+  "pressure_gpa": 40.0,
+  "general_query": "NaCl high pressure phase transitions crystal structure",
+  "phases": [
+    {
+      "space_group": "Pmma",
+      "name": "Pmma",
+      "search_terms": [
+        "Pmma",
+        "Pmma"
+      ],
+      "query": "NaCl Pmma phase high pressure",
+      "structures": [
+        "s012"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 0.0,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P4/mmm",
+      "name": "P4/mmm",
+      "search_terms": [
+        "P4/mmm",
+        "P4/mmm"
+      ],
+      "query": "NaCl P4/mmm phase high pressure",
+      "structures": [
+        "s011",
+        "s000",
+        "s013",
+        "s002"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 147.5,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "Pm-3m",
+      "name": "CsCl",
+      "search_terms": [
+        "CsCl",
+        "B2",
+        "Pm-3m",
+        "Pm-3m"
+      ],
+      "query": "NaCl CsCl phase high pressure",
+      "structures": [
+        "s007",
+        "s006",
+        "s008",
+        "s004"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 867.4,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "Fm-3m",
+      "name": "rocksalt",
+      "search_terms": [
+        "rocksalt",
+        "rock-salt",
+        "B1",
+        "Fm-3m",
+        "Fm-3m"
+      ],
+      "query": "NaCl rocksalt phase high pressure",
+      "structures": [
+        "s015",
+        "s009"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 884.4,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P6_3/mmc",
+      "name": "P6_3/mmc",
+      "search_terms": [
+        "P6_3/mmc",
+        "P63/mmc"
+      ],
+      "query": "NaCl P6_3/mmc phase high pressure",
+      "structures": [
+        "s010",
+        "s014",
+        "s005",
+        "s019",
+        "s001"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 942.6,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P6/mmm",
+      "name": "P6/mmm",
+      "search_terms": [
+        "P6/mmm",
+        "P6/mmm"
+      ],
+      "query": "NaCl P6/mmm phase high pressure",
+      "structures": [
+        "s018",
+        "s017"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 1881.3,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P-6m2",
+      "name": "P-6m2",
+      "search_terms": [
+        "P-6m2",
+        "P-6m2"
+      ],
+      "query": "NaCl P-6m2 phase high pressure",
+      "structures": [
+        "s003"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 3320.0,
+      "dft_dH_meV": null
+    },
+    {
+      "space_group": "P4_2/mmc",
+      "name": "P4_2/mmc",
+      "search_terms": [
+        "P4_2/mmc",
+        "P42/mmc"
+      ],
+      "query": "NaCl P4_2/mmc phase high pressure",
+      "structures": [
+        "s016"
+      ],
+      "trust_labels": [
+        "Needs DFT"
+      ],
+      "best_ml_dH_meV": 4465.8,
+      "dft_dH_meV": null
+    }
+  ],
+  "aliases": [
+    "sodium chloride"
+  ]
+}

@@ -99,7 +99,7 @@ def build_input(atoms, profile_name, checks, calc_dir):
     if not elements & MAGNETIC_ELEMENTS:
         incar.update(ISPIN=1, MAGMOM=None)  # no magnetic elements: spin polarization only costs time
     enmax = max(p.enmax for p in MPRelaxSet(structure, user_potcar_functional="PBE").potcar)
-    incar["ENCUT"] = round(profile["enmax_factor"] * enmax)
+    incar["ENCUT"] = math.ceil(profile["enmax_factor"] * enmax)  # round UP, never below the factor
 
     vis = MPRelaxSet(structure, user_incar_settings=incar, user_potcar_functional="PBE")
     failed = [reason for name in checks
@@ -113,6 +113,7 @@ def build_input(atoms, profile_name, checks, calc_dir):
         sg = "?"
     summary = {
         "name": calc_dir.name,
+        "formula": structure.composition.reduced_formula,  # lets later stages match results to the material
         "id": atoms.info["id"],
         "pressure_GPa": target,
         "label": atoms.info.get("label", "Needs DFT"),

@@ -1,18 +1,18 @@
-# Written by hp_pilot.py on 2026-10-22 18:30:32
+# Written by hp_pilot.py on 2026-10-22 19:01:43
 # HP-Pilot settings.
 # [project] is shared by all stages. Each [stageN] section belongs to one stage folder.
 # Change values here instead of editing the code.
 
 [project]
 name = "hp-pilot"
-composition = "Si"        # any formula pymatgen understands, e.g. "Si", "NaCl", "MgSiO3"
-pressure_gpa = 15.0       # target pressure in GPa (used from stage 2 on)
+composition = "CaSiO3"        # any formula pymatgen understands, e.g. "Si", "NaCl", "MgSiO3"
+pressure_gpa = 30.0       # target pressure in GPa (used from stage 2 on)
 seed = 42                 # same seed = same random structures, so runs are repeatable
 
 [stage1]
 generator = "pyxtal_random"   # which tool makes structures; options are in 1_stage_create_structure/generators.py
 n_structures = 20             # how many candidate structures to keep
-formula_units = [2, 4, 8]     # cell sizes to try, in formula units (Si with 4 -> 4 atoms)
+formula_units = [1, 2]     # cell sizes to try, in formula units (Si with 4 -> 4 atoms)
 space_groups = []             # empty list = pick randomly from all space groups 2..230
 volume_factor = 1.0           # <1 makes denser starting cells; relaxation fixes the volume anyway
 max_attempts = 500            # stop trying after this many failed or successful attempts

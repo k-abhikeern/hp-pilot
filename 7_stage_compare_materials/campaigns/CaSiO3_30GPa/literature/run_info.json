@@ -1,0 +1,9 @@
+{
+  "stage": 6,
+  "source": "Valency (claude.ai MCP connector)",
+  "n_papers": 85,
+  "counts": {
+    "Known": 2,
+    "Not found": 13
+  }
+}
