@@ -148,12 +148,15 @@ Each item says where the change would go, so it can be added without touching ot
 
 | Priority | Improvement | Where |
 |---|---|---|
-| Soon | Calibrate trust limits per chemistry: with the Si-tuned limits, every NaCl and CaSiO₃ structure was flagged | `[stage3]` limits, using the 52 DFT results |
+| Done | Calibrate trust limits per chemistry on the 52 DFT results (`calibrate_trust.py`, `limits_file` in `[stage3]`) | `3_stage_trust_check/` |
+| Soon | Calibrate on more structures and test on held-out ones (leave one material out), so the limits are not fitted and tested on the same data | `calibrate_trust.py` |
 | Soon | Rerun the 6 CaSiO₃ (and 2 NaCl) calculations that hit the quick profile's 60-step limit | stage 4 `--ids`, `NSW` |
 | Soon | Standard DFT for NaCl and CaSiO₃, as done for Si | `--profile standard`, archive with `--dft-name dft_standard` |
 | Soon | One command for a whole campaign (run, archive, DFT, archive DFT) | `hp-pilot campaign ...` |
 | Soon | Perovskite check generalised to other structure families (coordination via pymatgen CrystalNN) | `is_perovskite()` in `run_stage7.py` |
-| Later | Transition pressures: run each material at several pressures and plot enthalpy vs pressure (e.g. NaCl B1 to B2 near 27-30 GPa) | new stage 7 figure |
+| Done | Transition pressures: stage 8 scans pressure for the best phases (NaCl: 24.6 GPa in DFT, 23.5 GPa in ML, quick, 0 K) | `8_stage_pressure_scan/` |
+| Soon | Pressure scans for Si (diamond, beta-tin, simple hexagonal) and CaSiO₃; standard settings for the final numbers | `[stage8]` |
+| Later | Finite temperature: add phonon free energies (quasi-harmonic) to move from 0 K to room-temperature transition pressures | new stage |
 | Later | Compare predicted XRD with measured patterns from the papers found in stage 6 | stage 6 + 7 |
 
 ---

@@ -16,6 +16,8 @@
 | 5 | `5_stage_vasp_run` | Submit VASP jobs, check them, compare DFT with ML | DONE (first test run) |
 | 6 | `6_stage_literature_check` | Check predicted phases against the literature (Valency), agent-reviewed | DONE |
 | 7 | `7_stage_compare_materials` | Keep each material's results; combine Si, NaCl, CaSiO₃ into figures and a scorecard | DONE |
+| 8 | `8_stage_pressure_scan` | Enthalpy vs pressure for the best phases; 0 K transition pressure (ML and DFT) | DONE |
+| 3+ | `3_stage_trust_check/calibrate_trust.py` | Calibrate trust limits per material on the DFT results | DONE |
 
 ## How the project is organised
 
@@ -289,6 +291,41 @@ All values in meV/atom above the best structure.
 **What it means:** in all three materials the pipeline's DFT step lands on the phase the literature reports. The ML model alone gets one right (CaSiO₃), one nearly (Si) and one badly wrong (NaCl, off by more than 1 eV/atom). The trust check never let the NaCl error through, but its Trusted label failed on Si, and its limits flag everything for multi-element compounds, so they need calibrating per chemistry.
 
 **Files:** see `7_stage_compare_materials/README.md`.
+
+---
+
+## Trust calibration (DONE)
+
+**What was done**
+- New `3_stage_trust_check/calibrate_trust.py` uses the 52 DFT results from stage 7. For each trust signal it finds the limit that best separates "ML right" from "ML wrong" (error > 50 meV/atom), per material and shared.
+- Stage 3 can now use those limits: `limits_file` in `[stage3]` (or `--limits-file`). It takes the current material's section and otherwise falls back to `config.toml`. The default stays off, so earlier results are unchanged.
+- Tested: CaSiO₃ goes from 0 Trusted / 20 Needs DFT (old limits) to 5 Trusted / 15 Needs DFT (calibrated).
+
+**Results**
+- Si: catches 43% → 79% of wrong ML results; trusts 0% → 50% of right ones.
+- NaCl: every ML result was wrong, so the best rule is "always DFT" (100% caught).
+- CaSiO₃: 100% caught; trusts 0% → 83%.
+- One shared limit for all materials: 65% caught. **Limits must be per chemistry.**
+- For Si, model disagreement is *lowest* where ML is most wrong: the all-MACE committee agrees on its mistakes. Pressure and force signals carry the information there.
+- Fitted and tested on the same structures (small samples): shows what the signals can do, not tested performance on new materials.
+
+**Files:** `3_stage_trust_check/calibration/`, see the calibration section of `3_stage_trust_check/README.md`.
+
+---
+
+## Stage 8: pressure scan (DONE)
+
+**What was done**
+- New `8_stage_pressure_scan/run_stage8.py`. It takes the most stable phases of a stage 7 campaign, relaxes them at a list of pressures with ML (seconds) and DFT (stage 4's builder, planner and checks; stage 5's reader), plots dH vs pressure and finds the 0 K transition pressure.
+- `[stage8]` in `config.toml`: campaign, number of phases, pressures, profile.
+- NaCl rocksalt vs CsCl-type at 10, 20, 25, 30, 35, 40 and 50 GPa: 14 DFT calculations in 7 jobs (64279 to 64285), all converged in under 20 s each.
+
+**Results (quick DFT, 0 K)**
+- DFT transition rocksalt → CsCl-type: **24.6 GPa**. ML: 23.5 GPa.
+- ML underestimates how fast CsCl-type gains with pressure: at 50 GPa DFT puts it 111 meV/atom below rocksalt, ML only 19.
+- The retrieved abstracts confirm the transition but do not give its pressure; check 24.6 GPa against a reference value before quoting a comparison.
+
+**Files:** see `8_stage_pressure_scan/README.md`.
 
 ---
 

@@ -5,6 +5,7 @@ POTCAR*
 
 # Large VASP run folders (results are summarised in 5_stage_vasp_run/outputs/)
 5_stage_vasp_run/runs/
+8_stage_pressure_scan/runs/
 4_stage_incar_build/outputs/calcs/
 
 # Logs and machine-specific files

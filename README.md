@@ -51,6 +51,7 @@ All settings are in **`config.toml`**. Each stage folder has a README with an "I
 | `5_stage_vasp_run` | submit to SLURM, check jobs, compare DFT with ML |
 | `6_stage_literature_check` | check predicted phases against the literature via Valency (agent-run, reviewed) |
 | `7_stage_compare_materials` | archive each material; combined figures and scorecard (pymatgen XRD, structure matching) |
+| `8_stage_pressure_scan` | enthalpy vs pressure for the best phases; 0 K transition pressure (ML and DFT) |
 
 Progress and decisions are in `PROGRESS.md`. Planned improvements for every stage are in `future_stage_wise_improvements.md`.
 
@@ -62,5 +63,6 @@ Tools are kept in dictionaries so new ones plug in without changing other stages
 - machine-learning models: `hp_models.py` (shared by all stages)
 - optimizers: `OPTIMIZERS` in `2_stage_relax/run_stage2.py`
 - trust checks: `3_stage_trust_check/trust_checks.py`
+- calibrated trust limits per material: `3_stage_trust_check/calibrate_trust.py` → `limits_file` in `[stage3]`
 - VASP accuracy profiles and input checks: `4_stage_incar_build/incar_rules.py`
 - job script for another cluster: `4_stage_incar_build/slurm_template.sh`

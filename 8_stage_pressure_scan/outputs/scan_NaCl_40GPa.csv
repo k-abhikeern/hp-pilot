@@ -1,0 +1,15 @@
+phase,space_group,pressure_GPa,dft_dH_meV_per_atom,ml_dH_meV_per_atom,dft_space_group_after,dft_status
+CsCl,Pm-3m,10,80.0,52.2,Pm-3m,converged
+CsCl,Pm-3m,20,23.3,8.1,Pm-3m,converged
+CsCl,Pm-3m,25,-1.8,-3.5,Pm-3m,converged
+CsCl,Pm-3m,30,-25.4,-10.8,Pm-3m,converged
+CsCl,Pm-3m,35,-48.1,-15.0,Pm-3m,converged
+CsCl,Pm-3m,40,-69.6,-17.2,Pm-3m,converged
+CsCl,Pm-3m,50,-110.7,-18.8,Pm-3m,converged
+rocksalt,Fm-3m,10,0.0,0.0,Fm-3m,converged
+rocksalt,Fm-3m,20,0.0,0.0,Fm-3m,converged
+rocksalt,Fm-3m,25,0.0,0.0,Fm-3m,converged
+rocksalt,Fm-3m,30,0.0,0.0,Fm-3m,converged
+rocksalt,Fm-3m,35,0.0,0.0,Fm-3m,converged
+rocksalt,Fm-3m,40,0.0,0.0,Fm-3m,converged
+rocksalt,Fm-3m,50,0.0,0.0,Fm-3m,converged

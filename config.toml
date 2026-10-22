@@ -42,6 +42,8 @@ max_force_eV_A = 0.25             # another model sees forces larger than this o
 min_bond_ratio = 0.8              # atoms closer than this fraction of a normal bond -> Needs DFT
 collapse_fraction = 0.75          # volume below this fraction of the typical (median) volume -> Needs DFT
 dft_window_meV = 100.0            # Needs DFT structures within this of the best get priority "high"
+limits_file = ""                  # "" = use the limits above. Or "calibration/calibrated_limits.toml" to use
+                                  # per-material limits fitted on DFT by calibrate_trust.py (if the material is in it)
 make_plot = true
 
 [stage4]
@@ -63,3 +65,9 @@ time_limit = "01:00:00"       # per job (hh:mm:ss)
 vasp_dir = "/opt/ohpc/pub/software/vasp.6.4.2"
 vasp_exe = "vasp_std"
 make_plots = true
+
+[stage8]
+campaign = "NaCl_40GPa"       # which stage 7 campaign to scan (its most stable phases are used)
+n_phases = 2                  # how many of the most stable phases (in DFT) to follow over pressure
+pressures_gpa = [10, 20, 25, 30, 35, 40, 50]   # pressures to relax every phase at
+profile = "quick"             # DFT accuracy: "quick" (minutes) or "standard"

@@ -1,0 +1,17 @@
+# Trust limits per material, fitted by calibrate_trust.py on DFT results.
+# Use with:  limits_file = "calibration/calibrated_limits.toml"  in [stage3] of config.toml.
+
+[limits.Si]
+max_enthalpy_spread_meV = 1.953e+04
+max_pressure_deviation_gpa = 4.186
+max_force_eV_A = 0.0145
+
+[limits.NaCl]
+max_enthalpy_spread_meV = 0
+max_pressure_deviation_gpa = 0
+max_force_eV_A = 0
+
+[limits.CaSiO3]
+max_enthalpy_spread_meV = 331.2
+max_pressure_deviation_gpa = 7.741
+max_force_eV_A = 0.7145

@@ -85,9 +85,9 @@
     "mace_mp_small"
   ],
   "counts": {
-    "Trusted": 0,
-    "Needs DFT": 20,
-    "needs_dft_high_priority": 3
+    "Trusted": 5,
+    "Needs DFT": 15,
+    "needs_dft_high_priority": 1
   },
-  "log_file": "/home/abhikeern/project/7_OSI/3_stage_trust_check/logs/stage3_20261022_190702.log"
+  "log_file": "/home/abhikeern/project/7_OSI/3_stage_trust_check/logs/stage3_20261022_221112.log"
 }

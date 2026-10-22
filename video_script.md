@@ -30,9 +30,9 @@ We ran DFT on all twenty, first with quick settings, then with tight ones; each 
 
 We then tested two more materials with known answers: table salt at 40 gigapascals, and calcium silicate perovskite, a key mineral of Earth's mantle. The Claude agent checked every prediction against the literature through Valency, and threw out false matches, for example papers that use "NaCl-type" for other compounds. In all three cases, the DFT step lands on the phase the literature reports: simple hexagonal silicon, CsCl-type salt, and cubic perovskite. The ML model alone would have picked the wrong salt structure, off by more than one electronvolt per atom; the trust check flagged all of those structures.
 
-**[3:20 to 3:45] Honest limits and next steps. Screen: limits list.**
+**[3:20 to 3:45] Transition pressure and calibration. Screens: `8_stage_pressure_scan/outputs/enthalpy_vs_pressure_NaCl_40GPa.png`, then `3_stage_trust_check/calibration/calibration.png`.**
 
-Our committee used one model family, and its limits were tuned on silicon, so it flagged everything for the compounds. Next we will mix families, including fine-tuned high-pressure models, and recalibrate the trust limits on these DFT results.
+Over pressure, DFT puts salt's transition at about 25 gigapascals; the ML model gets close but underestimates how fast the new phase wins. Tuning the trust check on the DFT results lifts silicon's catch rate from 43 to 79 percent. The lesson: settings must be per material, and the committee needs different model families. That's our next step.
 
 **[3:45 to 4:00] Close. Screen: repository link.**
 

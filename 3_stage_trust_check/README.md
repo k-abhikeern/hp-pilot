@@ -77,3 +77,36 @@ If the check needs a new number (for example a coordination number), compute it 
 - `s010` (the collapsed structure from stage 2) is caught clearly: the other models put it at about 12,000 GPa instead of 15, a model breakdown.
 - The best structure, `s019` (beta-tin), is flagged: all three models agree it's the most stable, but disagree by 82 meV/atom on by how much. This is exactly the kind of structure DFT should confirm.
 - Limitation: all three committee models are MACE, so they share an architecture and may share blind spots. Mixing model families is a planned improvement.
+
+## Calibrating the limits on DFT results
+
+The limits above were first guesses tuned on silicon. Once DFT results exist (stage 7 campaigns), they can be fitted per material:
+
+```bash
+cd /home/abhikeern/project/7_OSI/3_stage_trust_check
+~/miniconda3/envs/osi/bin/python calibrate_trust.py                    # ML "wrong" = error > 50 meV/atom
+~/miniconda3/envs/osi/bin/python run_stage3.py --limits-file calibration/calibrated_limits.toml
+```
+
+To use the calibrated limits by default, set `limits_file = "calibration/calibrated_limits.toml"` in `[stage3]`. Stage 3 picks the section for the current material; materials not in the file keep the `config.toml` limits. The log says which limits were used.
+
+For each signal (enthalpy spread, pressure deviation, force), `calibrate_trust.py` tries every limit and keeps the one that best separates "ML right" from "ML wrong". It scores them by balanced accuracy: the average of the share of wrong results caught and the share of right results trusted.
+
+Outputs in `calibration/`:
+- `calibrated_limits.toml`: limits per material;
+- `calibration_report.md`: per signal and material, how well each limit does;
+- `calibration.png`: model disagreement vs real ML error, with old and new limits.
+
+**Results on 52 DFT structures (quick DFT):**
+
+| Material | Old limits: caught / trusted | Calibrated: caught / trusted |
+|---|---|---|
+| Si (14 of 20 ML results wrong) | 43% / 0% | 79% / 50% |
+| NaCl (18 of 18 wrong) | 100% / – | 100% / – (best rule: always DFT) |
+| CaSiO₃ (8 of 14 wrong) | 100% / 0% | 100% / 83% |
+| One shared limit for all | 80% / 0% | 65% / 100% |
+
+**What this means:**
+- **Limits must be set per chemistry.** CaSiO₃'s disagreement limit is about 330 meV/atom, against 20 tuned on Si, and no single limit works for all three materials.
+- **For Si, model disagreement points the wrong way.** The ML results that were wrong had the *lowest* disagreement (the all-MACE committee agreed on its mistakes), so only the pressure and force signals help there.
+- **Caution:** the limits are fitted and tested on the same few structures. They show what the signals can do, not proven performance on new materials.

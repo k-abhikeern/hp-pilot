@@ -155,10 +155,25 @@ def main():
     parser.add_argument("--config", help="settings file (default: ../config.toml)")
     parser.add_argument("--input", help="relaxed structures file (default: stage 2 output)")
     parser.add_argument("--models", nargs="+", help="committee model names from hp_models.py")
+    parser.add_argument("--limits-file", help="per-material limits from calibrate_trust.py (overrides config)")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
-    settings = cfg["stage3"]
+    settings = dict(cfg["stage3"])
+    limits_file = args.limits_file or settings.get("limits_file", "")
+    limits_note = "limits from config.toml"
+    if limits_file:
+        # Calibrated limits for this material (from calibrate_trust.py) replace the config limits.
+        import tomllib
+        from pymatgen.core import Composition
+        path = Path(limits_file) if Path(limits_file).is_absolute() else STAGE_DIR / limits_file
+        formula = Composition(cfg["project"]["composition"]).reduced_formula
+        per_material = tomllib.loads(path.read_text()).get("limits", {})
+        if formula in per_material:
+            settings.update(per_material[formula])
+            limits_note = f"calibrated limits for {formula} from {path.name}"
+        else:
+            limits_note = f"no calibrated limits for {formula} in {path.name}; using config.toml"
     model_names = args.models or settings["models"]
     input_path = Path(args.input or settings["input"] or DEFAULT_INPUT)
     out_dir, log_dir = stage_dirs(STAGE_DIR)
@@ -168,6 +183,8 @@ def main():
     torch.set_num_threads(settings["n_threads"])
 
     structures = read(input_path, index=":")
+    log.info("trust limits: %s (spread %.4g meV, pressure %.4g GPa, force %.4g eV/A)", limits_note,
+             settings["max_enthalpy_spread_meV"], settings["max_pressure_deviation_gpa"], settings["max_force_eV_A"])
     log.info("Stage 3 start | %d structures from %s | committee: %s | checks: %s",
              len(structures), input_path, ", ".join(model_names), ", ".join(settings["checks"]))
 
