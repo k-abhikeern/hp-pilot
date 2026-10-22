@@ -1,51 +1,39 @@
 # HP-Pilot: 4-minute video script
 
-Written for: hackathon judges. Speak at a normal pace, not faster. Target length about 4 minutes.
+Speak at normal pace (the rules forbid speeding up the voice). One screen per section.
 
 ---
 
-**[0:00 to 0:25] Hook. Show a slide with a pressure-temperature phase diagram.**
+**[0:00 to 0:25] Hook. Screen: pressure-temperature diagram or a diamond anvil cell.**
 
-Under high pressure, atoms arrange themselves into structures that never form at home. Those structures can make superhard materials, superconductors and the interiors of giant planets. Finding them is a search problem, and computers do most of the work.
+Under high pressure, atoms form structures that never exist at home, the kind found inside planets and in new superhard or superconducting materials. Computers search for them, and machine-learning models make that search fast.
 
-**[0:25 to 0:55] The problem. Show a plot of model error rising with pressure.**
+**[0:25 to 0:50] Problem. Screen: error-vs-pressure table from Loew et al. 2026.**
 
-The fast tool for this search is a machine-learning model. But general-purpose models are trained mostly near ambient conditions. At 150 gigapascals their errors can reach several electronvolts per atom. A search that trusts such a model can rank the wrong structure as the most stable one, and nothing warns you.
+But these models are trained mostly near normal pressure, and their errors grow as pressure rises. If you trust them blindly, you can pick the wrong structure. DFT is accurate, but too slow to run on everything.
 
-The accurate tool, DFT, is too slow to run on everything.
+**[0:50 to 1:20] The idea. Screen: the six-stage diagram.**
 
-**[0:55 to 1:25] The idea. Show the three-step diagram.**
+HP-Pilot asks one question for each candidate: can I trust the fast model here? It generates candidates, relaxes them at pressure, and a committee of models votes. If they agree, Trusted. If not, Needs DFT, with the reason written down.
 
-HP-Pilot answers one question for every candidate structure: can I trust the fast model here?
+**[1:20 to 2:00] Demo. Screen: terminal.**
 
-It relaxes each structure with several independent pretrained models. If they agree, the structure is marked Trusted. If they disagree, it is marked Needs DFT.
+One command: `./hp-pilot run --composition Si --pressure 15 --submit`. In two minutes it makes 20 silicon structures, relaxes them, labels them, writes VASP inputs with the right pressure settings, reads how busy the cluster is, explains how it split the jobs, and submits them.
 
-**[1:25 to 2:00] Live demo. Show the terminal, then the notebook.**
+*(Show `job_plan.md` and `trust_plot.png`.)*
 
-Here is the whole tool in one command:
+**[2:00 to 2:40] Results. Screen: `dft_vs_ml.png`.**
 
-    hp-pilot run --composition Si --pressure 15
+DFT finished in about a minute per job. The two lowest phases are simple hexagonal and beta-tin, only 12 meV apart, and both were flagged for DFT, correctly. And here is the most important point: all eight structures the committee called Trusted were wrong, by over 100 meV per atom. All three models were MACE models, and they shared the same blind spot. We know this only because the pipeline always sends some Trusted structures to DFT as controls.
 
-The output lists the candidate structures, each with a trust status. For the flagged ones, the tool writes VASP input files with high-pressure settings and a job script, ready to submit to a cluster. A plot shows disagreement against pressure.
+**[2:40 to 3:15] Literature check. Screen: `literature_check.png`.**
 
-**[2:00 to 2:40] How it works. Show the agent and the code.**
+Finally, the Claude agent searched the literature through Valency: 73 papers. It reviewed every match and threw out false ones, like a paper about silicon oxide. The result: beta-tin and simple hexagonal, our two lowest phases, are exactly what papers report near 15 GPa. Phases papers see only at hundreds of gigapascals came out high in our ranking too.
 
-An AI agent sits on top of the tool. You can type a plain-language request, such as "find silicon phases at 15 gigapascals", and the agent runs the steps and explains each decision. The tool itself is an ordinary Python package, so the agent is optional.
+**[3:15 to 3:45] Honest limits and next steps. Screen: limits list.**
 
-**[2:40 to 3:15] Why it matters. Show the evidence plot.**
+These are quick DFT settings, and our committee used one model family. Next we will mix families, including fine-tuned high-pressure models, and recalibrate the trust limits on these DFT results.
 
-On known transitions, such as sodium chloride going from the B1 to the B2 structure near 30 gigapascals, the disagreement rises at the pressures where the models get it wrong. That is the signal we use to decide when DFT is needed.
+**[3:45 to 4:00] Close. Screen: repository link.**
 
-For labs, that means fewer expensive calculations and a clear reason for each decision. For the community, it installs with pip, needs no registration, and runs from one command.
-
-**[3:15 to 3:45] Honest limits and next steps. Show the limits slide.**
-
-The first version handles a limited set of elements and uses pretrained models as they are. Next we want to fine-tune a foundation model on high-pressure data and test the trust signal on more transitions. Existing tools such as MAGUS already gate machine-learning results with their own error estimate. Our difference is the cross-model trust signal and the easy-to-use agent layer.
-
-**[3:45 to 4:00] Close. Show the repository link and your name.**
-
-HP-Pilot is open, installs with one command, and is built to be checked. The code and notebook are linked below. Thank you.
-
----
-
-*Production notes:* record at your own pace, do not speed up your voice (the rules require normal speed). Each slide above should be one screen. Post the video publicly with no login required, for example as a public YouTube video or a public thread.
+HP-Pilot is open, runs with one command on a normal CPU cluster, and it is built to show when it is wrong. Thank you.

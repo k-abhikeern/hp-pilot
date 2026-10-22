@@ -1,41 +1,37 @@
-# HP-Pilot: an open agent that flags when machine-learning models can't be trusted at high pressure
+# HP-Pilot: an agent-driven pipeline that checks when machine-learning potentials can be trusted at high pressure
 
-Written for: hackathon judges and materials scientists who run structure searches.
+## Problem
 
-## The problem
-
-Finding new crystal structures under high pressure reveals new materials, from superhard coatings to superconductors and the interiors of giant planets. Machine-learning interatomic potentials make these searches fast enough to be practical. But general-purpose models are trained mostly near ambient conditions, and recent benchmarks show their errors grow sharply at high pressure, sometimes by several eV per atom at 150 GPa. A search that trusts such a model can rank the wrong phase as the most stable.
-
-The accurate method, density functional theory (DFT), is too slow to run on every candidate. Setting up DFT calculations for high pressure also takes expert knowledge: pressure settings, plane-wave cutoffs and magnetic starting values all have to be right.
+Machine-learning potentials make crystal-structure searches at high pressure fast, but they are trained mostly near ambient conditions and their errors grow with pressure. A search that trusts them can rank the wrong phase as most stable. DFT is accurate but too slow to run on every candidate, and setting it up for high pressure takes expertise.
 
 ## What we built
 
-HP-Pilot is an open tool with one command:
+HP-Pilot is an open, six-stage pipeline run with one command (`./hp-pilot run --composition Si --pressure 15 --submit`):
 
-    hp-pilot run --composition Si --pressure 15
+1. random symmetric candidates (PyXtal);
+2. relaxation at the target pressure with a MACE foundation model;
+3. a trust check: a committee of models plus physics checks labels each structure Trusted or Needs DFT, with reasons;
+4. VASP inputs with high-pressure settings (pymatgen), hard input checks, and a job plan that reads the cluster load and explains itself;
+5. SLURM submission and a DFT-versus-ML comparison;
+6. a literature check: the Claude agent searches Valency, reviews every match, and the pipeline reports which predicted phases are known and at what pressures.
 
-It works in three stages.
+## Results (silicon, 15 GPa, CPU cluster)
 
-1. **Generate and relax.** It creates random candidate structures with PyXtal and relaxes them at the target pressure with several pretrained machine-learning models.
-2. **Check trust.** For each structure it compares the models. If they agree on energy and stress, the structure is marked Trusted. If they disagree, or the structure is strongly compressed, it is marked Needs DFT.
-3. **Hand off.** Flagged structures get VASP input files with high-pressure settings and a cluster job script, ready to submit.
+- 20 candidates, ML relaxation in about 2 minutes; all 20 then checked with quick DFT (about 1 minute per job).
+- DFT puts simple hexagonal and beta-tin as the lowest phases, 12 meV/atom apart. The literature check (73 papers via Valency) independently reports exactly these two phases around this pressure (7.5 to 16 GPa).
+- The ML model ranked beta-tin first; DFT ranks simple hexagonal first. Both were flagged Needs DFT, correctly.
+- **Key finding:** all 8 structures the committee called Trusted were wrong by 100 to 190 meV/atom. The three committee members were all MACE models and shared the same blind spot. The pipeline caught this because it always sends Trusted controls to DFT.
 
-An AI agent (Claude, connected through the Model Context Protocol) drives these steps from a plain-language request, and a marimo notebook shows the results.
-
-## Evidence
-
-[Figure placeholder: model disagreement against pressure for NaCl (B1 to B2 transition, about 30 GPa) and Si (diamond to beta-tin, about 11 GPa). The disagreement should rise where the models' accuracy falls. Replace with real results before submission.]
+[Figure: `5_stage_vasp_run/outputs/dft_vs_ml.png`. ML vs DFT enthalpy above the best structure; Trusted structures (green) sit far above the ML = DFT line.]
 
 ## Why it matters
 
-- **For labs:** it cuts the number of expensive DFT calculations to the structures that actually need them, and it gives a clear reason for each decision.
-- **For the community:** it installs with pip, needs no registration, and runs from one command. Researchers can use it without writing code.
-- **Novelty:** existing high-pressure search tools such as MAGUS already gate machine-learning results with an internal error estimate. HP-Pilot instead uses agreement between independent pretrained models as the trust signal, and wraps the workflow in an agent that a non-specialist can drive.
+- **Labs:** DFT time goes where it is needed, and every decision is logged with a reason.
+- **Community:** runs from one command on a standard CPU cluster; every stage has a plug-in socket for new generators, models, checks and job templates.
+- **Honest validation:** DFT controls and a literature check are built in, so the tool can show when it is wrong.
 
-## Limitations and next steps
+## Limits and next steps
 
-The first version handles ambient-pressure-trained models and a limited set of elements. The next steps are fine-tuning a foundation model on high-pressure data from HPmat, and checking the trust signal against a wider set of known transitions.
+Quick DFT settings only; committee limited to one model family; trust limits are first guesses. Next: mix model families (MatterSim, eSEN, fine-tuned high-pressure models from Loew et al. 2026), recalibrate the limits on the DFT results, and rerun with standard settings.
 
-## Code
-
-[Repository link placeholder]
+Code: [repository link]
