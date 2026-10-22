@@ -7,7 +7,7 @@ from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 INK, MUTED, SURFACE = "#0b0b0b", "#5a5955", "#fcfcfb"
 BLUE, ORANGE, PALE_BLUE, PALE_ORANGE = "#0072B2", "#E69F00", "#e6f0f8", "#fbf1dc"
-OUT = Path(__file__).resolve().parent / "figures" / "graphical_abstract.png"
+OUT = Path(__file__).resolve().parent / "figures" / "graphical_abstract_diagram.png"  # the README uses graphical_abstract.png
 
 fig, ax = plt.subplots(figsize=(16, 9), facecolor=SURFACE)
 ax.set_xlim(0, 16)
