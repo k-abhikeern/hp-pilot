@@ -41,4 +41,4 @@ HP-Pilot is an open, seven-stage pipeline run with one command (`./hp-pilot run 
 
 Mix model families in the committee (MatterSim, eSEN, fine-tuned high-pressure models from Loew et al. 2026); calibrate the trust limits per chemistry on these 52 DFT results; standard DFT for all materials; transition pressures from scans over pressure.
 
-Code: [repository link]
+Code: https://github.com/k-abhikeern/hp-pilot
