@@ -229,6 +229,29 @@ Stages pass results forward through files: stage 1 writes `outputs/structures.ex
 
 ---
 
+## Standard DFT check on all 20 structures (DONE)
+
+**What was done:** stage 4 with `--profile standard` (ENCUT 368 eV, k-spacing 0.2, forces to 0.01 eV/Å, up to 200 steps), split into 10 jobs of 8 cores (64249 to 64258, 1 to 4 minutes each). All 20 converged in 3 to 42 steps at 14.94 to 15.05 GPa. New script `5_stage_vasp_run/compare_runs.py` compares any two runs. Quick results kept in `outputs_quick_run_20261022_182951/`, standard in `outputs_standard_run_20261022_184759/`.
+
+**Quick vs standard**
+
+| Group | ML | Quick DFT | Standard DFT |
+|---|---|---|---|
+| simple hexagonal `s015` | 12 | 0 (best) | 0 (best) |
+| beta-tin `s019` | 0 (best) | 12 | **3.5** |
+| `s000` (sh, distorts to P6₃/mcm in standard) | 12 | 0.8 | 3.9 |
+| 8 Trusted (simple cubic, Cmcm, P4/nmm) | about 12 | 118 to 205 | **87 to 144** |
+| other Needs DFT | 60 to 182 | 125 to 238 | 117 to 202 |
+
+All values in meV/atom above the best structure.
+
+**What changed and what didn't**
+- Mean change from quick to standard: 25 meV/atom, largest 67. Rank agreement (Spearman) 0.91. Quick settings are fine for screening, not for fine ranking.
+- **Still true:** simple hexagonal is lowest; the 8 Trusted structures are still 75 to 130 meV/atom worse than ML said. The shared blind spot of the all-MACE committee is confirmed with tight settings.
+- **Changed:** beta-tin moved from 12 to 3.5 meV/atom above simple hexagonal. At 15 GPa they are practically degenerate within DFT accuracy, so "which is lowest" is not something this level of theory can settle. That fits the literature, where Si goes beta-tin → Imma → simple hexagonal around 13 to 16 GPa.
+
+---
+
 ## The full pipeline now works end to end
 
 composition and pressure → random structures (1) → ML relaxation (2) → trust check (3) → VASP inputs and job plan (4) → VASP runs and DFT vs ML comparison (5) → literature check (6).

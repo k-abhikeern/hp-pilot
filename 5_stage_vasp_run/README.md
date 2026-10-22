@@ -62,6 +62,23 @@ With `PSTRESS` set, VASP adds PSTRESS × volume to the energies it writes, so th
 - Above the line: the structure is worse than ML thought.
 - A **green (Trusted) point far from the line** means the trust check missed an ML error.
 
+## Compare two runs
+
+```bash
+~/miniconda3/envs/osi/bin/python compare_runs.py runs/run_A runs/run_B --names quick standard
+```
+
+Writes `outputs/compare_<A>_vs_<B>.csv` and `.png`: each structure's enthalpy above the best in both runs, the change, rank agreement, and which structure is best in each.
+
+Note: `collect` rewrites `outputs/`. Copy it first if you want to keep a run's summary (as done for `outputs_quick_run_*` and `outputs_standard_run_*`).
+
+## Results with standard settings (all 20 structures)
+
+- All 20 converged, pressure 14.94 to 15.05 GPa.
+- Simple hexagonal still lowest; beta-tin now only 3.5 meV/atom above (12 with quick settings), so the two are practically degenerate at 15 GPa.
+- The 8 Trusted structures are still 87 to 144 meV/atom above the best, against about 12 from ML: the committee's blind spot is real.
+- Quick vs standard: mean change 25 meV/atom, rank agreement 0.91 (`outputs/compare_quick_vs_standard.png`).
+
 ## Results on all 20 structures (Si, 15 GPa, quick profile)
 
 All 20 converged. DFT ranks simple hexagonal first and beta-tin 12 meV/atom above it. **All 8 Trusted structures were wrong by about 100 to 190 meV/atom**: MACE put them about 12 meV/atom above the best, DFT 118 to 205. The all-MACE committee agreed on the same mistake. See `../PROGRESS.md` for the full table.

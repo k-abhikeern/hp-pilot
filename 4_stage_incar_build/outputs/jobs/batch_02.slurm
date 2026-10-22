@@ -20,7 +20,7 @@ ulimit -s unlimited
 
 # Run each calculation in this batch one after another, and record how each one ended.
 # Paths are relative to the folder the job is submitted from, so the whole run folder can be moved.
-for calc in ../calcs/s019_15GPa; do
+for calc in ../calcs/s018_15GPa; do
     cd "$SLURM_SUBMIT_DIR/$calc" || continue
     echo "start $(date +%T)" > status.txt
     srun --mpi=pmi2 --ntasks=$SLURM_NTASKS --cpus-per-task=1 --threads-per-core=1 vasp_std > vasp.out 2>&1

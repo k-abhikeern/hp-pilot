@@ -24,7 +24,7 @@ One command: `./hp-pilot run --composition Si --pressure 15 --submit`. In two mi
 
 **[2:00 to 2:40] Results. Screen: `dft_vs_ml.png`.**
 
-DFT finished in about a minute per job. The two lowest phases are simple hexagonal and beta-tin, only 12 meV apart, and both were flagged for DFT, correctly. And here is the most important point: all eight structures the committee called Trusted were wrong, by over 100 meV per atom. All three models were MACE models, and they shared the same blind spot. We know this only because the pipeline always sends some Trusted structures to DFT as controls.
+We ran DFT on all twenty, first with quick settings, then with tight ones; each job took a few minutes. The two lowest phases are simple hexagonal and beta-tin, only 3.5 meV apart, practically a tie, and both were flagged for DFT, correctly. And here is the most important point: all eight structures the committee called Trusted were wrong, by 75 to 130 meV per atom, even with tight settings. All three models were MACE models, and they shared the same blind spot. We know this only because the pipeline always sends some Trusted structures to DFT as controls.
 
 **[2:40 to 3:15] Literature check. Screen: `literature_check.png`.**
 
@@ -32,7 +32,7 @@ Finally, the Claude agent searched the literature through Valency: 73 papers. It
 
 **[3:15 to 3:45] Honest limits and next steps. Screen: limits list.**
 
-These are quick DFT settings, and our committee used one model family. Next we will mix families, including fine-tuned high-pressure models, and recalibrate the trust limits on these DFT results.
+So far this is one material at one pressure, and our committee used one model family. Next we will mix families, including fine-tuned high-pressure models, and recalibrate the trust limits on these DFT results.
 
 **[3:45 to 4:00] Close. Screen: repository link.**
 

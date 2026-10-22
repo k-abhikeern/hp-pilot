@@ -129,7 +129,9 @@ Each item says where the change would go, so it can be added without touching ot
 | Priority | Improvement | Where |
 |---|---|---|
 | Done | submit / status / collect, using the user's YARGLA SLURM setup (VASP 6.4.2); first 4 test jobs run and compared with ML | `run_stage5.py` |
-| Tonight | Rerun the same 4 structures with `profile = "standard"` to check whether the 12 meV/atom ranking flip between beta-tin and simple hexagonal is real | stage 4 + stage 5 |
+| Done | Standard rerun of all 20 structures (10 jobs, 1 to 4 min each) and `compare_runs.py`: beta-tin vs simple hexagonal shrinks to 3.5 meV/atom (degenerate); the Trusted blind spot holds (87 to 144 meV/atom) | stage 4 `--profile standard`, `compare_runs.py` |
+| Soon | `collect` should write each run's summary to its own folder instead of overwriting `outputs/` | `collect` in `run_stage5.py` |
+| Later | Settle near-degenerate phases (beta-tin vs simple hexagonal) with converged k-points, phonons / temperature, or another functional | new stage |
 | Done | Quick DFT check on all 20 structures (4 jobs, ~1 min each) | stage 4 `--ids`, stage 5 |
 | Soon | Middle-cluster labels in `dft_vs_ml.png` still touch; place labels to avoid overlap | `plot_dft_vs_ml()` |
 | Soon | Flag runs whose final pressure is far from the target, or that hit NSW without converging | `collect` in `run_stage5.py` |

@@ -1,0 +1,21 @@
+name,id,label,space_group,ml_dH_meV,quick_dH_meV,standard_dH_meV,change_meV,quick_steps,standard_steps,standard_status
+s015_15GPa,s015,Needs DFT,P6/mmm,12.1,0.0,0.0,0.0,7,7,converged
+s019_15GPa,s019,Needs DFT,I4_1/amd,0.0,12.2,3.5,-8.7,3,7,converged
+s000_15GPa,s000,Needs DFT,P6_3/mcm,12.1,0.8,3.9,3.2,7,24,converged
+s016_15GPa,s016,Trusted,Cmcm,12.4,118.0,87.2,-30.8,38,42,converged
+s013_15GPa,s013,Trusted,Cmcm,15.7,118.1,87.2,-30.9,33,29,converged
+s012_15GPa,s012,Needs DFT,I4/mmm,98.3,124.6,117.3,-7.3,3,12,converged
+s017_15GPa,s017,Needs DFT,P6_3/mmc,116.1,130.7,120.0,-10.7,6,9,converged
+s008_15GPa,s008,Needs DFT,P6_3/mmc,117.0,130.7,122.0,-8.7,27,39,converged
+s003_15GPa,s003,Needs DFT,I4/mmm,59.8,126.1,135.9,9.8,5,7,converged
+s009_15GPa,s009,Trusted,Pm-3m,11.9,165.0,136.3,-28.7,5,9,converged
+s007_15GPa,s007,Trusted,Pm-3m,12.1,153.8,136.3,-17.5,9,9,converged
+s001_15GPa,s001,Trusted,Pm-3m,12.0,205.2,137.9,-67.3,1,4,converged
+s014_15GPa,s014,Trusted,Pm-3m,12.2,205.2,138.0,-67.2,3,3,converged
+s006_15GPa,s006,Trusted,Pm-3m,12.0,171.3,143.4,-27.9,7,11,converged
+s004_15GPa,s004,Trusted,P4/nmm,12.8,171.3,143.5,-27.9,7,11,converged
+s002_15GPa,s002,Needs DFT,P4_2/mmc,121.4,186.0,151.6,-34.4,5,11,converged
+s011_15GPa,s011,Needs DFT,I4/mmm,100.3,182.7,154.3,-28.5,5,18,converged
+s010_15GPa,s010,Needs DFT,Pm-3m,904.7,212.0,157.6,-54.5,6,6,converged
+s005_15GPa,s005,Needs DFT,Fm-3m,100.0,169.0,168.2,-0.8,3,3,converged
+s018_15GPa,s018,Needs DFT,P6_322,182.2,238.4,201.7,-36.6,7,33,converged

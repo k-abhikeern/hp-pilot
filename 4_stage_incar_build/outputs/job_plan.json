@@ -18,7 +18,7 @@
       "calcs": [
         "s000_15GPa"
       ],
-      "est_cost": 4096
+      "est_cost": 28672
     },
     {
       "batch": 2,
@@ -26,9 +26,9 @@
       "script": "batch_02.slurm",
       "cores": 8,
       "calcs": [
-        "s019_15GPa"
+        "s018_15GPa"
       ],
-      "est_cost": 1792
+      "est_cost": 28224
     },
     {
       "batch": 3,
@@ -36,9 +36,10 @@
       "script": "batch_03.slurm",
       "cores": 8,
       "calcs": [
-        "s009_15GPa"
+        "s011_15GPa",
+        "s015_15GPa"
       ],
-      "est_cost": 1600
+      "est_cost": 32220
     },
     {
       "batch": 4,
@@ -46,11 +47,80 @@
       "script": "batch_04.slurm",
       "cores": 8,
       "calcs": [
-        "s015_15GPa"
+        "s008_15GPa",
+        "s017_15GPa"
       ],
-      "est_cost": 1024
+      "est_cost": 32288
+    },
+    {
+      "batch": 5,
+      "job_name": "hp_b05",
+      "script": "batch_05.slurm",
+      "cores": 8,
+      "calcs": [
+        "s001_15GPa",
+        "s012_15GPa"
+      ],
+      "est_cost": 33152
+    },
+    {
+      "batch": 6,
+      "job_name": "hp_b06",
+      "script": "batch_06.slurm",
+      "cores": 8,
+      "calcs": [
+        "s014_15GPa",
+        "s019_15GPa"
+      ],
+      "est_cost": 32144
+    },
+    {
+      "batch": 7,
+      "job_name": "hp_b07",
+      "script": "batch_07.slurm",
+      "cores": 8,
+      "calcs": [
+        "s002_15GPa",
+        "s006_15GPa"
+      ],
+      "est_cost": 32144
+    },
+    {
+      "batch": 8,
+      "job_name": "hp_b08",
+      "script": "batch_08.slurm",
+      "cores": 8,
+      "calcs": [
+        "s003_15GPa",
+        "s013_15GPa"
+      ],
+      "est_cost": 32000
+    },
+    {
+      "batch": 9,
+      "job_name": "hp_b09",
+      "script": "batch_09.slurm",
+      "cores": 8,
+      "calcs": [
+        "s005_15GPa",
+        "s016_15GPa",
+        "s010_15GPa"
+      ],
+      "est_cost": 32080
+    },
+    {
+      "batch": 10,
+      "job_name": "hp_b10",
+      "script": "batch_10.slurm",
+      "cores": 8,
+      "calcs": [
+        "s009_15GPa",
+        "s007_15GPa",
+        "s004_15GPa"
+      ],
+      "est_cost": 32592
     }
   ],
   "time_limit": "01:00:00",
-  "profile": "quick"
+  "profile": "standard"
 }

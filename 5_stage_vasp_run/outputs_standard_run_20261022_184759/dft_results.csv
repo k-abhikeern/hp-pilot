@@ -1,0 +1,21 @@
+name,id,pressure_GPa,label,dft_status,ionic_steps,ml_space_group,dft_space_group,ml_enthalpy_eV_per_atom,dft_enthalpy_eV_per_atom,dft_energy_eV_per_atom,dft_volume_A3_per_atom,dft_pressure_GPa,ml_dH_meV,dft_dH_meV
+s000_15GPa,s000,15.0,Needs DFT,converged,24,P6/mmm,P6_3/mcm,-3.7705,-3.7819,-5.0517,13.563,15.053,12.0726,3.9329
+s001_15GPa,s001,15.0,Trusted,converged,4,Pm-3m,Pm-3m,-3.7706,-3.648,-5.0042,14.4864,15.0022,11.9643,137.9004
+s002_15GPa,s002,15.0,Needs DFT,converged,11,P4_2/mmc,P4_2/mmc,-3.6612,-3.6343,-4.8735,13.2357,14.9661,121.378,151.5528
+s003_15GPa,s003,15.0,Needs DFT,converged,7,I4/mmm,I4/mmm,-3.7228,-3.65,-4.9188,13.5526,14.981,59.7862,135.8515
+s004_15GPa,s004,15.0,Trusted,converged,11,P4/nmm,P4/nmm,-3.7698,-3.6424,-4.9953,14.451,14.9962,12.765,143.4936
+s005_15GPa,s005,15.0,Needs DFT,converged,3,Fm-3m,Fm-3m,-3.6826,-3.6176,-4.7983,12.6111,14.9806,99.9583,168.2385
+s006_15GPa,s006,15.0,Trusted,converged,11,Pm-3m,Pm-3m,-3.7706,-3.6424,-4.996,14.4576,15.0015,11.9575,143.4279
+s007_15GPa,s007,15.0,Trusted,converged,9,Pm-3m,Pm-3m,-3.7704,-3.6495,-5.0014,14.4397,14.9911,12.1056,136.3066
+s008_15GPa,s008,15.0,Needs DFT,converged,39,P6_3/m,P6_3/mmc,-3.6655,-3.6638,-4.8403,12.5658,14.9545,116.9952,122.0303
+s009_15GPa,s009,15.0,Trusted,converged,9,Pm-3m,Pm-3m,-3.7706,-3.6496,-5.0015,14.44,14.993,11.927,136.2934
+s010_15GPa,s010,15.0,Needs DFT,converged,6,Pm-3m,Pm-3m,-2.8778,-3.6283,-4.9788,14.4255,14.9364,904.7236,157.5748
+s011_15GPa,s011,15.0,Needs DFT,converged,18,Fm-3m,I4/mmm,-3.6822,-3.6316,-4.817,12.6621,15.0001,100.3094,154.2648
+s012_15GPa,s012,15.0,Needs DFT,converged,12,I4/mmm,I4/mmm,-3.6842,-3.6685,-4.8634,12.7629,15.0112,98.3132,117.3451
+s013_15GPa,s013,15.0,Trusted,converged,29,Cmcm,Cmcm,-3.7669,-3.6987,-4.992,13.8144,14.9472,15.6821,87.1814
+s014_15GPa,s014,15.0,Trusted,converged,3,Pm-3m,Pm-3m,-3.7703,-3.6478,-5.0039,14.4837,15.0009,12.2257,138.0096
+s015_15GPa,s015,15.0,Needs DFT,converged,7,P6/mmm,P6/mmm,-3.7705,-3.7859,-5.0541,13.5459,15.01,12.0581,0.0
+s016_15GPa,s016,15.0,Trusted,converged,42,Cmcm,Cmcm,-3.7702,-3.6987,-4.9906,13.7986,15.0237,12.3614,87.15
+s017_15GPa,s017,15.0,Needs DFT,converged,9,P6_3/mmc,P6_3/mmc,-3.6664,-3.6659,-4.8458,12.6029,15.0104,116.1068,119.9617
+s018_15GPa,s018,15.0,Needs DFT,converged,33,P6_322,P6_322,-3.6003,-3.5841,-4.9427,14.5115,14.9957,182.2318,201.7293
+s019_15GPa,s019,15.0,Needs DFT,converged,7,I4_1/amd,I4_1/amd,-3.7825,-3.7824,-5.0688,13.7402,15.008,0.0,3.4552

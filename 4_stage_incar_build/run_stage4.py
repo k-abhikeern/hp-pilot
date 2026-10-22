@@ -164,7 +164,7 @@ def plan_batches(calcs, settings, status):
 
     if settings["n_batches"] > 0:
         n = min(settings["n_batches"], len(calcs))
-        why.append(f"{n} job(s), as set in config.toml (n_batches = {settings['n_batches']}).")
+        why.append(f"{n} job(s), as requested (n_batches = {settings['n_batches']}).")
     else:
         if status["available"]:
             fit_now = max(1, status["idle_cores"] // cores)

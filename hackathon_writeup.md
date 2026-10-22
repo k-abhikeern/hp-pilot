@@ -17,10 +17,10 @@ HP-Pilot is an open, six-stage pipeline run with one command (`./hp-pilot run --
 
 ## Results (silicon, 15 GPa, CPU cluster)
 
-- 20 candidates, ML relaxation in about 2 minutes; all 20 then checked with quick DFT (about 1 minute per job).
-- DFT puts simple hexagonal and beta-tin as the lowest phases, 12 meV/atom apart. The literature check (73 papers via Valency) independently reports exactly these two phases around this pressure (7.5 to 16 GPa).
-- The ML model ranked beta-tin first; DFT ranks simple hexagonal first. Both were flagged Needs DFT, correctly.
-- **Key finding:** all 8 structures the committee called Trusted were wrong by 100 to 190 meV/atom. The three committee members were all MACE models and shared the same blind spot. The pipeline caught this because it always sends Trusted controls to DFT.
+- 20 candidates, ML relaxation in about 2 minutes; all 20 then checked with DFT twice, with quick and with standard settings (1 to 4 minutes per job).
+- DFT puts simple hexagonal and beta-tin as the lowest phases, only 3.5 meV/atom apart with standard settings, so practically degenerate. The literature check (73 papers via Valency) independently reports exactly these two phases around this pressure (7.5 to 16 GPa). Both were flagged Needs DFT, correctly.
+- **Key finding:** all 8 structures the committee called Trusted were wrong by 75 to 130 meV/atom (standard settings; ML put them about 12 meV/atom above the best, DFT 87 to 144). The three committee members were all MACE models and shared the same blind spot. The pipeline caught this because it always sends Trusted controls to DFT.
+- Quick and standard DFT agree on the overall ranking (rank correlation 0.91; mean change 25 meV/atom), so quick settings are good enough for screening.
 
 [Figure: `5_stage_vasp_run/outputs/dft_vs_ml.png`. ML vs DFT enthalpy above the best structure; Trusted structures (green) sit far above the ML = DFT line.]
 
@@ -32,6 +32,6 @@ HP-Pilot is an open, six-stage pipeline run with one command (`./hp-pilot run --
 
 ## Limits and next steps
 
-Quick DFT settings only; committee limited to one model family; trust limits are first guesses. Next: mix model families (MatterSim, eSEN, fine-tuned high-pressure models from Loew et al. 2026), recalibrate the limits on the DFT results, and rerun with standard settings.
+Committee limited to one model family; trust limits are first guesses; one material at one pressure so far. Next: mix model families (MatterSim, eSEN, fine-tuned high-pressure models from Loew et al. 2026), recalibrate the limits on these DFT results, and test more materials and pressures.
 
 Code: [repository link]
