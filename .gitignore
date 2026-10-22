@@ -29,3 +29,4 @@ __pycache__/
 3_stage_trust_check/external_tests/*/series_*/
 3_stage_trust_check/external_tests/*/dft_*/
 video_script.md
+last_run_config.toml

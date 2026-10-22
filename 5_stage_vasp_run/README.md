@@ -81,7 +81,7 @@ Note: `collect` rewrites `outputs/`. Copy it first if you want to keep a run's s
 
 ## Results on all 20 structures (Si, 15 GPa, quick profile)
 
-All 20 converged. DFT ranks simple hexagonal first and beta-tin 12 meV/atom above it. **All 8 Trusted structures were wrong by about 100 to 190 meV/atom**: MACE put them about 12 meV/atom above the best, DFT 118 to 205. The all-MACE committee agreed on the same mistake. See `../PROGRESS.md` for the full table.
+All 20 converged. DFT ranks simple hexagonal first and beta-tin 12 meV/atom above it. **All 8 Trusted structures were wrong by about 100 to 190 meV/atom**: MACE put them about 12 meV/atom above the best, DFT 118 to 205. The all-MACE committee agreed on the same mistake. See `../docs/PROGRESS.md` for the full table.
 
 ## First results (Si, 15 GPa, quick profile, 4 jobs of 8 cores, under 10 s each)
 
@@ -93,4 +93,4 @@ All 20 converged. DFT ranks simple hexagonal first and beta-tin 12 meV/atom abov
 
 - All 4 converged, symmetry unchanged, pressure on the cell 14.9 to 15.4 GPa (target 15).
 - **The ranking flipped.** ML put beta-tin first, DFT puts simple hexagonal first. These were the flagged structures, so flagging them was right. (A 12 meV gap is within the error of quick settings; rerun with `standard` to confirm.)
-- **The Trusted control was wrong by about 150 meV/atom.** All three MACE models agreed, and all three were wrong. A committee of one model family can share a blind spot. The fix is to mix model families (see `../future_stage_wise_improvements.md`).
+- **The Trusted control was wrong by about 150 meV/atom.** All three MACE models agreed, and all three were wrong. A committee of one model family can share a blind spot. The fix is to mix model families (see `../docs/future_stage_wise_improvements.md`).

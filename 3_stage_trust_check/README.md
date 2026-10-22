@@ -38,7 +38,7 @@ A structure is **Needs DFT** if any check fails. The reasons are written next to
 | `short_bond` | atoms closer than `min_bond_ratio` × normal bond | unphysical squeezing |
 | `collapse` | volume below `collapse_fraction` × typical volume | the model may have fallen into a "hole" |
 
-The limits are **first guesses**. They should be tuned on systems with known answers (see `../future_stage_wise_improvements.md`).
+The limits are **first guesses**. They should be tuned on systems with known answers (see `../docs/future_stage_wise_improvements.md`).
 
 ## Files
 
