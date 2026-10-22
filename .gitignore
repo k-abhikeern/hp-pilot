@@ -28,3 +28,4 @@ __pycache__/
 # VASP run folders of the external MgVH5 tests (POTCARs inside; summaries are in the series outputs)
 3_stage_trust_check/external_tests/*/series_*/
 3_stage_trust_check/external_tests/*/dft_*/
+video_script.md

@@ -1,79 +1,115 @@
 # HP-Pilot
 
-Finds candidate crystal structures at high pressure, checks whether a machine-learning model can be trusted for each one, and prepares VASP inputs for the ones that need DFT.
+**Find high-pressure crystal structures, and know when your fast machine-learning model is wrong.**
 
-## Quick start: one command
+HP-Pilot is an open pipeline that searches for stable crystal structures under pressure. It uses machine-learning (ML) potentials for speed, and a trust check decides for each structure whether the ML answer can be trusted or needs a quantum (DFT) check.
+
+---
+
+## About
+
+Under high pressure, atoms arrange into structures that never form at ambient conditions. These structures matter for planetary interiors, superhard materials and superconductors. Searching for them with DFT is accurate but slow. Universal ML potentials are fast, but they are trained mostly near ambient pressure, and their errors grow with pressure.
+
+HP-Pilot answers one question for every candidate: **can I trust the fast model here?**
+
+## Why use it
+
+- **Fast where it is safe, accurate where it is not.** ML handles the search. DFT is run only on the structures the trust check flags.
+- **It shows its reasons.** Every structure gets a label (Trusted or Needs DFT) and a written reason.
+- **It is built for a cluster.** VASP inputs are written with high-pressure settings, checked, and split into SLURM jobs that fit the cluster's free cores.
+- **It is modular.** Each stage has its own folder, its own README and a single "plug-in" file. New generators, models or checks can be added without touching other stages.
+
+## What we found so far
+
+![NaCl transition pressure](8_stage_pressure_scan/outputs/enthalpy_vs_pressure_NaCl_40GPa.png)
+
+- **NaCl:** DFT puts the rocksalt → CsCl transition at **24.6 GPa** (0 K, quick settings). ML gives 23.5 GPa, but it underestimates how strongly the new phase wins at higher pressure.
+- **Trust limits depend on the material.** Limits fitted for silicon do not work for CaSiO₃ or NaCl. The calibration figure shows why.
+- **A database test (MgVH₅, 32–90 GPa):** DFT keeps the database structure at every pressure. ML stays wrong by 160–230 meV/atom, so the trust check is needed here.
+
+![Trust calibration](3_stage_trust_check/calibration/calibration.png)
+
+These results come from small test sets. They show what the method can do, not a proven accuracy on new materials.
+
+## Installation
+
+You need Python, conda, and a CPU machine. A GPU is not needed.
 
 ```bash
-cd /home/abhikeern/project/7_OSI
-./hp-pilot run --composition Si --pressure 15            # stages 1-4: structures, relax, trust check, VASP inputs
-./hp-pilot run --composition Si --pressure 15 --submit   # same, and send the VASP jobs to SLURM
-./hp-pilot status                                        # are the jobs done?
+# 1. create the environment
+conda create -y -n osi python=3.11
+conda activate osi
+
+# 2. install the packages
+pip install ase pymatgen pyxtal
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+pip install mace-torch
+
+# 3. check the install
+python 0_stage_softwares_resources_etc/check_env.py
+```
+
+DFT stages (4–5) also need a licensed **VASP** installation and your own POTCAR files. Put them in `0_stage_softwares_resources_etc/potcars/`. POTCARs are never included in this repository.
+
+## How to use it
+
+Run everything from the project folder:
+
+```bash
+cd 7_OSI
+
+./hp-pilot run --composition Si --pressure 15            # stages 1-4: structures, ML relax, trust check, VASP inputs
+./hp-pilot run --composition Si --pressure 15 --submit   # the same, and send VASP jobs to SLURM
+./hp-pilot status                                        # are the VASP jobs finished?
 ./hp-pilot collect                                       # compare DFT with ML
-./hp-pilot literature                                    # literature report (after the agent's Valency search)
+./hp-pilot literature                                    # literature report (after the Valency search)
 ```
 
-## Stage by stage
+Change the material, the pressure and the settings in `config.toml`. Every stage folder has a README with an "I want to..." table that says what to change.
 
-```bash
-cd /home/abhikeern/project/7_OSI
-~/miniconda3/envs/osi/bin/python 1_stage_create_structure/run_stage1.py   # make candidate structures
-~/miniconda3/envs/osi/bin/python 2_stage_relax/run_stage2.py              # relax them at pressure
-~/miniconda3/envs/osi/bin/python 3_stage_trust_check/run_stage3.py        # label Trusted / Needs DFT
-~/miniconda3/envs/osi/bin/python 4_stage_incar_build/run_stage4.py        # VASP inputs + job plan
-~/miniconda3/envs/osi/bin/python 5_stage_vasp_run/run_stage5.py submit    # send jobs to SLURM
-~/miniconda3/envs/osi/bin/python 5_stage_vasp_run/run_stage5.py status    # check jobs
-~/miniconda3/envs/osi/bin/python 5_stage_vasp_run/run_stage5.py collect   # compare DFT with ML
-```
+## Outputs: what to check
 
-All settings are in **`config.toml`**. Each stage folder has a README with an "I want to..." table that says what to change.
-
-## Most common changes
-
-| I want to... | Change in `config.toml` |
-|---|---|
-| study a different material | `composition` in `[project]`, e.g. `"NaCl"` |
-| use a different pressure | `pressure_gpa` in `[project]` |
-| make more or fewer candidates | `n_structures` in `[stage1]` |
-| relax my own structure instead | `input` in `[stage2]` |
-| use a different model | `model` in `[stage2]` (options in `hp_models.py`) |
-| change the committee or trust limits | `models` and the `max_...` limits in `[stage3]` |
-
-## Stages
-
-| Folder | What it does |
-|---|---|
-| `0_stage_softwares_resources_etc` | installs, environment, logs |
-| `1_stage_create_structure` | random candidate structures |
-| `2_stage_relax` | relax at pressure, rank by enthalpy |
-| `3_stage_trust_check` | compare models, label Trusted or Needs DFT, summary plot |
-| `4_stage_incar_build` | VASP inputs for flagged structures, input checks, cluster-aware job plan, XRD plot |
-| `5_stage_vasp_run` | submit to SLURM, check jobs, compare DFT with ML |
-| `6_stage_literature_check` | check predicted phases against the literature via Valency (agent-run, reviewed) |
-| `7_stage_compare_materials` | archive each material; combined figures and scorecard (pymatgen XRD, structure matching) |
-| `8_stage_pressure_scan` | enthalpy vs pressure for the best phases; 0 K transition pressure (ML and DFT) |
-
-External test on database structures (MgVH5, 32 to 90 GPa, HPCSD): `3_stage_trust_check/external_tests/MgVH5_series/`.
-
-Progress and decisions are in `PROGRESS.md`. Planned improvements for every stage are in `future_stage_wise_improvements.md`.
-
-## Key figures
-
-| Figure | What it shows | What it supports |
+| Figure | Where | What it tells you |
 |---|---|---|
-| [overview.png](7_stage_compare_materials/outputs/overview.png) | Si, NaCl and CaSiO₃: ML vs DFT ranking, DFT winner, simulated XRD | The DFT step lands on the literature phase for all three |
-| [calibration.png](3_stage_trust_check/calibration/calibration.png) | Real ML error vs model disagreement, per material, with old and calibrated cut-offs | Limits must be set per material |
-| [enthalpy_vs_pressure_NaCl_40GPa.png](8_stage_pressure_scan/outputs/enthalpy_vs_pressure_NaCl_40GPa.png) | NaCl rocksalt vs CsCl enthalpy vs pressure, DFT and ML | The 0 K transition pressure (24.6 GPa DFT) and where ML goes wrong |
-| [mgvh5_ml_vs_dft.png](3_stage_trust_check/external_tests/MgVH5_series/outputs/mgvh5_ml_vs_dft.png) | MgVH₅ from the HPCSD database, 32–90 GPa: ML error and volumes | ML stays wrong at every pressure tested; the trust check is needed |
+| Trust plot | `3_stage_trust_check/outputs/trust_plot.png` | Which structures are Trusted and which need DFT, and why |
+| Job plan | `4_stage_incar_build/outputs/job_plan.png` | How the VASP jobs are split across cores |
+| DFT vs ML | `5_stage_vasp_run/outputs/dft_vs_ml.png` | Where ML and DFT disagree |
+| Literature check | `6_stage_literature_check/outputs/literature_check.png` | Which predicted phases appear in the literature |
+| Overview | `7_stage_compare_materials/outputs/overview.png` | The main summary across materials |
+| Transition pressure | `8_stage_pressure_scan/outputs/enthalpy_vs_pressure_*.png` | Pressure at which one phase overtakes another |
+| Calibration | `3_stage_trust_check/calibration/calibration.png` | How well the trust signals predict real ML errors |
 
-## Adding tools
+Tables are in the same folders (for example `trust_report.csv`, `dft_results.csv`, `scan_*.csv`).
 
-Tools are kept in dictionaries so new ones plug in without changing other stages:
+## Future extensions
 
-- structure generators: `1_stage_create_structure/generators.py`
-- machine-learning models: `hp_models.py` (shared by all stages)
-- optimizers: `OPTIMIZERS` in `2_stage_relax/run_stage2.py`
-- trust checks: `3_stage_trust_check/trust_checks.py`
-- calibrated trust limits per material: `3_stage_trust_check/calibrate_trust.py` → `limits_file` in `[stage3]`
-- VASP accuracy profiles and input checks: `4_stage_incar_build/incar_rules.py`
-- job script for another cluster: `4_stage_incar_build/slurm_template.sh`
+- **Agentic workflow (atomate2-style):** let an agent plan, submit, check and rerun the stages, with each step written to a log.
+- **More ML models:** add model families (MatterSim, eSEN, fine-tuned high-pressure potentials) to the committee, so it does not share one model's blind spots.
+- **Better trust signals:** normalised disagreement that transfers between materials and pressures.
+- **More data:** calibrate the trust limits on database series (for example HPCSD) instead of small test sets.
+- **Finite temperature:** transition pressures with phonon and temperature effects.
+- **More structure generators and cluster templates:** plug-in files for other generators and job schedulers.
+
+Full list: [future_stage_wise_improvements.md](future_stage_wise_improvements.md).
+
+## Project layout
+
+| Folder | Purpose |
+|---|---|
+| `0_stage_softwares_resources_etc` | environment, checks, install logs |
+| `1_stage_create_structure` | candidate structures |
+| `2_stage_relax` | ML relaxation at pressure |
+| `3_stage_trust_check` | trust labels, calibration, external tests |
+| `4_stage_incar_build` | VASP inputs, input checks, job plan |
+| `5_stage_vasp_run` | submit, check and compare VASP runs |
+| `6_stage_literature_check` | literature check through Valency |
+| `7_stage_compare_materials` | combined figures across materials |
+| `8_stage_pressure_scan` | enthalpy vs pressure and transition pressure |
+
+## Credits
+
+Built with [MACE](https://github.com/ACEsuit/mace), [pymatgen](https://pymatgen.org), [ASE](https://wiki.fysik.dtu.dk/ase/) and [PyXtal](https://pyxtal.readthedocs.io). Database test structures are from the [HPCSD database](https://doi.org/10.48550/arXiv.2605.14471). They are not redistributed in this repository.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
